@@ -1,6 +1,6 @@
-export default function location(state = {}, action) {
+export default function socialData(state = {}, action) {
   if (action.type === 'FETCH_DATA') {
-    return { ...state, data: action.payload };
+    return { ...state, info: action.payload };
   }
   return state;
 }
