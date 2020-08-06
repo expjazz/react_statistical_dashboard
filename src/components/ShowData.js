@@ -19,6 +19,7 @@ const PresidentIndex = styled.div.attrs({
 function ShowData(props) {
   const byPresident = useSelector(selectPresident);
   const byMonth = useSelector(selectMonth);
+  const numberMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,8 +30,12 @@ function ShowData(props) {
     <PresidentIndex>
       haha
       <h1>tailwind</h1>
+      <select name="months" id="months" onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
+        {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
+
+      </select>
+
       { byMonth.map((president, ind) => <PresidentCard fbFollowers={president.fb_followers} fbLikes={president.fb_number_likes} president={president.profile} key={ind} />) }
-      <button onClick={() => dispatch({ type: 'SET_MONTH_FILTER', payload: 2 })}>Click</button>
     </PresidentIndex>
   );
 }
