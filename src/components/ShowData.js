@@ -6,7 +6,7 @@ import { fetchData } from '../actionCreators/fetchData';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 
-const { selectPresident, selectMonth } = allSelects;
+const { selectPresident, selectMonth, selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
   className: 'w-full bg-gray-900',
 })`
@@ -17,23 +17,18 @@ const PresidentIndex = styled.div.attrs({
 `;
 
 function ShowData(props) {
-  // const [byMonth, setMonth] = useState(['places']);
-  const { filter } = props;
   // const byPresident = useSelector(selectPresident);
   const dispatch = useDispatch();
 
   const numberMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const social = useSelector(selectSocialMedia);
   const byMonth = useSelector(selectMonth);
-  // if (tempMonth[0].month !== byMonth[0].month) {
-  //   setMonth(tempMonth);
-  // }
-  // setMonth(tempMonth);
+
   const changeMonth = e => {
     dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) });
   };
   useEffect(() => {
     props.fetchData();
-    console.log('a');
   }, []);
 
   return (

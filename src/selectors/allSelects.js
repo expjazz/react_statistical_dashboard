@@ -6,23 +6,26 @@ const selectPresident = createSelector(
     .filter(row => row.profile === 'Donald Trump'),
 );
 
-const selectMonth = state => state.socialData.info
-  .filter(row => row.month === state.filter.month);
-export default { selectPresident, selectMonth };
-
-const filtered = state => state.filter;
+const selectMonth = createSelector(
+  state => state.socialData,
+  state => state.filter,
+  (socialData, filter) => socialData.info.filter(row => row.month === filter.month),
+);
 
 const selectSocialMedia = createSelector(
-  state => state.socialData,
-  filtered,
-  socialData => socialData.info.filter(row => {
-    switch (filtered.socialMedia) {
+  state => state.socialData, state => state.filter,
+  (socialData, filter) => socialData.info.filter(row => {
+    switch (filter.socialMedia) {
       case 'instagram':
-        if (row.month === filtered.month) {
+        if (row.month === filter.month) {
+          console.log('here');
           return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments];
         }
+        break;
       default:
         return socialData;
     }
   }),
 );
+
+export default { selectPresident, selectMonth, selectSocialMedia };
