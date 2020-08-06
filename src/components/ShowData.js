@@ -3,9 +3,10 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { fetchData } from '../actionCreators/fetchData';
-import selector from '../selectors';
+import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 
+const { selectPresident, selectMonth } = allSelects;
 const PresidentIndex = styled.div.attrs({
   className: 'w-full bg-gray-900',
 })`
@@ -43,8 +44,7 @@ function ShowData(props) {
   useEffect(() => {
     props.fetchData();
   }, []);
-  // const filtered = useSelector(state => { console.log(state); selector(state); });
-  // console.log(filtered);
+
   return (
     <PresidentIndex>
       haha
@@ -57,7 +57,7 @@ function ShowData(props) {
 
 const mapStateToProps = state => ({
   socialData: state.socialData,
-  filtered: selector(state),
+  filtered: { byPresident: selectPresident(state), byMonth: selectMonth(state) },
 });
 
 export default (connect(mapStateToProps, { fetchData }))(ShowData);

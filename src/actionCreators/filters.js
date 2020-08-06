@@ -8,3 +8,8 @@ export const setPresidentFilter = (content = '') => ({
   type: 'SET_PRESIDENT_FILTER',
   payload: content,
 });
+
+export const setMonthFilter = (content = '') => ({
+  type: 'SET_MONTH_FILTER',
+  payload: content,
+});

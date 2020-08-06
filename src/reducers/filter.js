@@ -1,6 +1,7 @@
 const defaultState = {
   socialMedia: '',
   president: 'Donald Trump',
+  month: 1,
 };
 
 export default (state = defaultState, action) => {
@@ -14,6 +15,11 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         president: action.payload,
+      };
+    case 'SET_MONTH_FILTER':
+      return {
+        ...state,
+        month: action.payload,
       };
     default:
       return state;
