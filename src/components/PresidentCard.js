@@ -19,19 +19,22 @@ const StyledPresidentCard = styled.div.attrs({
 
 `;
 export default function PresidentCard(props) {
+  const { president, fbFollowers, fbLikes } = props;
   return (
     <StyledPresidentCard>
-      <div className="left">Donald Trump</div>
+      <div className="left">
+        {president}
+      </div>
       <div className="center">
         <div className="insta">
           <div className="content">
             <div className="title">
-              <p>  Likes </p>
-              900
+              <p>  Followers: </p>
+              {fbFollowers}
             </div>
             <div className="sub">
-              <p>  Followers </p>
-              300
+              <p>  Likes: </p>
+              {fbLikes}
             </div>
           </div>
         </div>

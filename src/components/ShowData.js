@@ -11,7 +11,7 @@ const PresidentIndex = styled.div.attrs({
   className: 'w-full bg-gray-900',
 })`
  &{
-   height: 100vh;
+   /* height: 100vh; */
  }
 
 `;
@@ -44,13 +44,14 @@ function ShowData(props) {
   useEffect(() => {
     props.fetchData();
   }, []);
+  const { byMonth } = props.filtered;
 
   return (
     <PresidentIndex>
       haha
       <h1>tailwind</h1>
-      {props.socialData.info[0].profile ? props.socialData.info[0].profile : 'not yet'}
-      <PresidentCard />
+      { byMonth.map((president, ind) => <PresidentCard fbFollowers={president.fb_followers} fbLikes={president.fb_number_likes} president={president.profile} key={ind} />) }
+
     </PresidentIndex>
   );
 }
