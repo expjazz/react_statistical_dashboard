@@ -15,50 +15,28 @@ const PresidentIndex = styled.div.attrs({
  }
 
 `;
-// const Test = styled.div.attrs({
-//   className: 'w-full bg-purple-300 h-screen flex flex-col items-center justify-center',
-// })`
-//   & {
-//     h1 {
-//       ${tw`font-sans text-6xl bg-red-500 font-hairline text-6xl text-teal-500`}
-//     }
-//     p {
-//       ${tw`text-gray-700 text-lg`}
-//     }
-//     h2 {
-//       ${tw`text-2xl font-hairline mt-5 text-teal-500`}
-//     }
-//     ul {
-//       ${tw`inline-flex`}
-//     }
-//     li {
-//       ${tw`mr-5`}
-//     }
-//     a {
-//       ${tw`text-blue-500 hover:text-gray-500 hover:underline`}
-//     }
-//   }
-// `;
+
 function ShowData(props) {
+  const byPresident = useSelector(selectPresident);
+  const byMonth = useSelector(selectMonth);
+
   const dispatch = useDispatch();
   useEffect(() => {
     props.fetchData();
   }, []);
-  const { byMonth } = props.filtered;
 
   return (
     <PresidentIndex>
       haha
       <h1>tailwind</h1>
       { byMonth.map((president, ind) => <PresidentCard fbFollowers={president.fb_followers} fbLikes={president.fb_number_likes} president={president.profile} key={ind} />) }
-
+      <button onClick={() => dispatch({ type: 'SET_MONTH_FILTER', payload: 2 })}>Click</button>
     </PresidentIndex>
   );
 }
 
 const mapStateToProps = state => ({
   socialData: state.socialData,
-  filtered: { byPresident: selectPresident(state), byMonth: selectMonth(state) },
 });
 
 export default (connect(mapStateToProps, { fetchData }))(ShowData);
