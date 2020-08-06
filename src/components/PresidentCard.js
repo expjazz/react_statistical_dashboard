@@ -9,6 +9,12 @@ const StyledPresidentCard = styled.div.attrs({
     .center {
       ${tw`flex`}
     }
+    .content {
+      ${tw`flex`}
+    }
+    .content > div {
+      ${tw`flex flex-col`}
+    }
   }
 
 `;
@@ -19,25 +25,17 @@ export default function PresidentCard(props) {
       <div className="center">
         <div className="insta">
           <div className="content">
-            <div className="title">Likes 900</div>
-            <div className="sub">Folowers 300</div>
+            <div className="title">
+              <p>  Likes </p>
+              900
+            </div>
+            <div className="sub">
+              <p>  Followers </p>
+              300
+            </div>
           </div>
         </div>
-        <div className="face">
-          <div className="content">
-            <div className="title">Likes 900</div>
-            <div className="sub">Folowers 300</div>
-          </div>
 
-        </div>
-        <div className="twitter">
-          <div className="content">
-            {' '}
-            <div className="title">Likes 900</div>
-            <div className="sub">Folowers 300</div>
-          </div>
-
-        </div>
       </div>
 
       <div className="rigth">
