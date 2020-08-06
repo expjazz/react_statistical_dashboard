@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
@@ -17,20 +17,30 @@ const PresidentIndex = styled.div.attrs({
 `;
 
 function ShowData(props) {
-  const byPresident = useSelector(selectPresident);
-  const byMonth = useSelector(selectMonth);
-  const numberMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
+  // const [byMonth, setMonth] = useState(['places']);
+  const { filter } = props;
+  // const byPresident = useSelector(selectPresident);
   const dispatch = useDispatch();
+
+  const numberMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const byMonth = useSelector(selectMonth);
+  // if (tempMonth[0].month !== byMonth[0].month) {
+  //   setMonth(tempMonth);
+  // }
+  // setMonth(tempMonth);
+  const changeMonth = e => {
+    dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) });
+  };
   useEffect(() => {
     props.fetchData();
+    console.log('a');
   }, []);
 
   return (
     <PresidentIndex>
       haha
       <h1>tailwind</h1>
-      <select name="months" id="months" onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
+      <select name="months" id="months" onChange={e => changeMonth(e)}>
         {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
 
       </select>
@@ -42,6 +52,7 @@ function ShowData(props) {
 
 const mapStateToProps = state => ({
   socialData: state.socialData,
+  filter: state.filter,
 });
 
 export default (connect(mapStateToProps, { fetchData }))(ShowData);

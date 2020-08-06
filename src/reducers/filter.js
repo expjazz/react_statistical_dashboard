@@ -1,7 +1,7 @@
 const defaultState = {
-  socialMedia: '',
   president: 'Donald Trump',
   month: 1,
+  socialMedia: 'instagram',
 };
 
 export default (state = defaultState, action) => {
