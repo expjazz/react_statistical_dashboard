@@ -1,6 +1,6 @@
 const defaultState = {
   socialMedia: '',
-  president: '',
+  president: 'Donald Trump',
 };
 
 export default (state = defaultState, action) => {
