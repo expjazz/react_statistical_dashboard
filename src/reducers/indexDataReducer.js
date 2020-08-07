@@ -7,18 +7,7 @@ const defaultState = {
       Retweets: 'twitter_retweets',
     },
   },
-  // Facebook: {
-  //   Followers: 'fb_followers',
-  //   Likes: 'fb_number_likes',
-  //   Comments: 'fb_number_comments',
-  //   Posts: 'fb_number_posts',
-  // },
-  // Instagram: {
-  //   Followers: 'insta_followers',
-  //   Comments: 'insta_number_comments',
-  //   Posts: 'insta_number_posts',
-  //   Likes: 'insta_number_likes',
-  // },
+
 };
 
 export default (state = defaultState, action) => {

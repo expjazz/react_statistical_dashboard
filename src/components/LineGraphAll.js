@@ -1,19 +1,68 @@
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import allSelects from '../selectors/allSelects';
 import SelectTag from './SelectTag';
 
 export default function LineGraphAll() {
+  const dispatch = useDispatch();
   const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
-
+  const socialMedia = useSelector(state => state.indexDataReducer.social);
+  console.log(socialMedia);
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
-  const handleSelectChange = e => {
+  const handleSelectChangePresident = e => {
     const newPresidents = [...presidentInChart, e.target.value];
     setPresidentInChart(newPresidents);
+  };
+
+  const handleSelectChangeSocial = e => {
+    switch (e.target.value) {
+      case 'Twitter':
+        dispatch({
+          type: 'SET_INDEX_DATA_TWITTER',
+          payload: {
+            Twitter: {
+              Followers: 'twitter_fans',
+              Posts: 'twitter_number_posts',
+              Likes: 'twitter_number_likes',
+              Retweets: 'twitter_retweets',
+            },
+          },
+        });
+        break;
+
+      case 'Facebook':
+        dispatch({
+          type: 'SET_INDEX_DATA_FACEBOOK',
+          payload: {
+            Facebook: {
+              Followers: 'fb_followers',
+              Likes: 'fb_number_likes',
+              Comments: 'fb_number_comments',
+              Posts: 'fb_number_posts',
+            },
+          },
+        });
+        break;
+      case 'Instagram':
+        dispatch({
+          type: 'SET_INDEX_DATA_INSTAGRAM',
+          payload: {
+            Instagram: {
+              Followers: 'insta_followers',
+              Comments: 'insta_number_comments',
+              Posts: 'insta_number_posts',
+              Likes: 'insta_number_likes',
+            },
+          },
+        });
+        break;
+      default:
+        return '';
+    }
   };
   if (Object.keys(rowsByPresident).length === 0) {
     return <p>loading</p>;
@@ -38,9 +87,9 @@ export default function LineGraphAll() {
 
   return (
     <>
-      <SelectTag content={presidents} parentState={handleSelectChange} value={presidents[0]} />
+      <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidents[0]} />
       <div className="socialMedia">
-        {/* <SelectTag content={Object.keys(socialMedia)} value={Object.keys(socialMedia)[0]} parentState={handleSelectChange} /> */}
+        <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMedia)[0]} parentState={handleSelectChangeSocial} />
       </div>
       <Line data={data} />
     </>
