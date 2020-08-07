@@ -13,9 +13,7 @@ export default function SelectTag(props) {
     content, action, value, parentState,
   } = props;
   if (parentState) {
-    handleChange = e => {
-      console.log(e.target.value);
-    };
+    handleChange = e => parentState(e);
   } else {
     handleChange = e => {
       dispatch({ type: action, payload: e.target.value });

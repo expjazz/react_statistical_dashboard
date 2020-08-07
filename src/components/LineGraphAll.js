@@ -9,10 +9,13 @@ export default function LineGraphAll() {
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
+  const handleSelectChange = e => {
+    const newPresidents = [...presidentInChart, e.target.value];
+    setPresidentInChart(newPresidents);
+  };
   if (Object.keys(rowsByPresident).length === 0) {
     return <p>loading</p>;
   }
-
   const setData = () => {
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const dataset = [];
@@ -30,7 +33,7 @@ export default function LineGraphAll() {
 
   return (
     <>
-      <SelectTag content={presidents} parentState value={presidents[0]} />
+      <SelectTag content={presidents} parentState={handleSelectChange} value={presidents[0]} />
       <Line data={data} />
     </>
   );
