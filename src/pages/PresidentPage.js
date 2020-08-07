@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import allSelectors from '../selectors/allSelects';
+import PresidentLineBar from '../components/PresidetLineBar';
 
 export default function PresidentPage() {
   const { selectPresident } = allSelectors;
@@ -11,6 +12,7 @@ export default function PresidentPage() {
   return (
     <div>
       {president}
+      <PresidentLineBar />
     </div>
   );
 }

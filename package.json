@@ -5,9 +5,11 @@
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "babel-plugin-macros": "^2.8.0",
+    "chart.js": "^2.9.3",
     "cra-template": "1.0.3",
     "postcss-cli": "^7.1.1",
     "react": "^16.13.1",
+    "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",

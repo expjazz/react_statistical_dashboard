@@ -3,7 +3,19 @@ import { createSelector } from 'reselect';
 const selectPresident = createSelector(
   state => state.socialData, state => state.filter,
   (socialData, filter) => socialData.info
-    .filter(row => row.profile === filter.president),
+    .filter(row => row.profile === filter.president).map(row => {
+      switch (filter.socialMedia) {
+        case 'instagram':
+          return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments, row.month];
+
+        case 'facebook':
+          return [row.profile, row.fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts, row.month];
+        case 'twitter':
+          return [row.profile, row.twitter_fans, row.twitter_number_likes, row.twitter_retweets, row.twitter_number_posts, row.month];
+        default:
+          return socialData;
+      }
+    }),
 );
 
 const selectMonth = createSelector(
@@ -30,3 +42,11 @@ const selectSocialMedia = createSelector(
 );
 
 export default { selectPresident, selectMonth, selectSocialMedia };
+
+// const selectPresident = createSelector(
+//   state => state.socialData, state => state.filter,
+//   (socialData, filter) => socialData.info
+//     .filter(row => row.profile === filter.president).map(row => {
+
+//     }),
+// );
