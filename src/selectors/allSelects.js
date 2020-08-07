@@ -14,14 +14,15 @@ const selectMonth = createSelector(
 
 const selectSocialMedia = createSelector(
   state => state.socialData, state => state.filter,
-  (socialData, filter) => socialData.info.filter(row => {
+  (socialData, filter) => socialData.info.filter(row => row.month === filter.month).map(row => {
     switch (filter.socialMedia) {
       case 'instagram':
-        if (row.month === filter.month) {
-          console.log('here');
-          return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments];
-        }
-        break;
+        return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments];
+
+      case 'facebook':
+        return [row.profile, row.fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts];
+      case 'twitter':
+        return [row.profile, row.twitter_fans, row.twitter_number_likes, row.twitter_retweets, row.twitter_number_posts];
       default:
         return socialData;
     }

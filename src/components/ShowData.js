@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { fetchData } from '../actionCreators/fetchData';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 
-const { selectPresident, selectMonth, selectSocialMedia } = allSelects;
+const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
   className: 'w-full bg-gray-900',
 })`
@@ -17,37 +17,37 @@ const PresidentIndex = styled.div.attrs({
 `;
 
 function ShowData(props) {
-  // const byPresident = useSelector(selectPresident);
   const dispatch = useDispatch();
 
   const numberMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const social = useSelector(selectSocialMedia);
-  const byMonth = useSelector(selectMonth);
+  const socialMedia = ['instagram', 'facebook', 'twitter'];
 
-  const changeMonth = e => {
-    dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) });
-  };
+  const byMonth = useSelector(selectSocialMedia);
+
   useEffect(() => {
-    props.fetchData();
-  }, []);
+    dispatch(fetchData());
+  }, [dispatch]);
 
   return (
     <PresidentIndex>
       haha
       <h1>tailwind</h1>
-      <select name="months" id="months" onChange={e => changeMonth(e)}>
+      <select name="months" id="months" onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
         {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
 
       </select>
+      <select name="socialMedia" id="socialMedia">
+        {socialMedia.map((network, ind) => (
+          <option key={ind} value={network}>
+            {network}
+          </option>
+        ))}
 
-      { byMonth.map((president, ind) => <PresidentCard fbFollowers={president.fb_followers} fbLikes={president.fb_number_likes} president={president.profile} key={ind} />) }
+      </select>
+
+      { byMonth.map((president, ind) => <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />) }
     </PresidentIndex>
   );
 }
 
-const mapStateToProps = state => ({
-  socialData: state.socialData,
-  filter: state.filter,
-});
-
-export default (connect(mapStateToProps, { fetchData }))(ShowData);
+export default ShowData;
