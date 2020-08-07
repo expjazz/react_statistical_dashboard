@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchData } from '../actionCreators/fetchData';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
@@ -46,7 +46,11 @@ function ShowData(props) {
 
       </select>
 
-      { byMonth.map((president, ind) => <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />) }
+      { byMonth.map((president, ind) => (
+        <Link to={`/${president[0]}`} key={ind}>
+          <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />
+        </Link>
+      )) }
     </PresidentIndex>
   );
 }
