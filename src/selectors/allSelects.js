@@ -17,6 +17,12 @@ const selectPresident = createSelector(
     }),
 );
 
+const selectRowByPresident = createSelector(
+  state => state.socialData,
+  state => state.filter,
+  (socialData, filter) => socialData.info.filter(row => row.president === filter.president),
+);
+
 const selectMonth = createSelector(
   state => state.socialData,
   state => state.filter,
@@ -40,23 +46,16 @@ const selectSocialMedia = createSelector(
   }),
 );
 
-const selectOnlyPresident = createSelector(
-  state => state.socialData, state => state.filter,
-  (socialData, filter) => socialData.info.filter(row => row.profile === filter.president),
-);
-
 const clearData = createSelector(
   state => state.socialData, state => state.filter,
   (socialData, filter) => {
     const data = socialData.info.filter(row => row.profile === filter.president);
-    const arr = [];
     const obj = {
       all: 0,
       inst: 0,
       fb: 0,
       twitter: 0,
     };
-    const flag = false;
     data.forEach(row => {
       obj.all += ((row.insta_followers || 0) + (row.twitter_fans || 0) + (row.fb_followers || 0)) / 1000000;
       obj.inst += (row.insta_followers || 1) / 1000000;
@@ -72,13 +71,5 @@ const clearData = createSelector(
 );
 
 export default {
-  selectPresident, selectMonth, selectSocialMedia, selectOnlyPresident, clearData,
+  selectPresident, selectMonth, selectSocialMedia, clearData, selectRowByPresident,
 };
-
-// const selectPresident = createSelector(
-//   state => state.socialData, state => state.filter,
-//   (socialData, filter) => socialData.info
-//     .filter(row => row.profile === filter.president).map(row => {
-
-//     }),
-// );
