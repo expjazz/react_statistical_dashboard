@@ -1,5 +1,5 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import allSelectors from '../selectors/allSelects';
 
@@ -13,26 +13,58 @@ export default function PresidentLinePerGrow() {
       three: [],
     };
     presidentData.forEach(row => {
-      console.log(row);
-      obj.one.push({ x: row[2], y: row[1] });
-      obj.two.push(row[2]);
-      obj.three.push(row[3]);
+      obj.one.push(row[1] / 1000);
+      obj.two.push(row[4]);
+      obj.three.push({ x: row[4], y: row[1] });
     });
-    return obj;
+    const tempArr = obj.one.map((val, ind) => {
+      if (ind === 11) {
+        return 0;
+      }
+      return obj.one[ind + 1] - val;
+    });
+    return { ...obj, one: tempArr };
   };
 
   const { one, two, three } = dataGen();
-  console.log(one);
+  console.log(one.length);
+  console.log(two.length);
   const data = {
+    labels: ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+
     datasets: [
       {
-        label: 'Grow per Likes',
-        borderColor: 'red',
+        label: 'Followers',
+        backgroundColor: 'red',
         data: one,
       },
+      {
+        label: 'Posts',
+        backgroundColor: 'yellow',
+        data: two,
+      },
+
     ],
+
+  };
+
+  const options = {
+
+    title: {
+      display: true,
+      text: 'Population growth (millions)',
+    },
+    barValueSpacing: 20,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+        },
+      }],
+    },
+
   };
   return (
-    <Line data={data} />
+    <Bar data={data} options={options} />
   );
 }
