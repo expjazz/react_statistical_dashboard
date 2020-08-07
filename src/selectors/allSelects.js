@@ -67,6 +67,20 @@ const selectSocialMedia = createSelector(
   }),
 );
 
+const selectListOnlyPresidents = createSelector(
+  state => state.socialData,
+  socialData => socialData.info.map(row => {
+    const presidents = [];
+    if (presidents.length === 0) {
+      presidents.push(row.profile);
+      return row.profile;
+    } if (!presidents.contains(row.profile) && row.category === 'Líderes Mundiais') {
+      presidents.push(row.profile);
+      return row.profile;
+    }
+  }),
+);
+
 const clearData = createSelector(
   state => state.socialData, state => state.filter,
   (socialData, filter) => {
@@ -92,5 +106,5 @@ const clearData = createSelector(
 );
 
 export default {
-  selectPresident, selectMonth, selectSocialMedia, clearData, selectRowByPresident, selectListsByPresidents,
+  selectPresident, selectMonth, selectSocialMedia, clearData, selectRowByPresident, selectListsByPresidents, selectListOnlyPresidents,
 };

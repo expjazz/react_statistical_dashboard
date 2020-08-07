@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import allSelects from '../selectors/allSelects';
+import SelectTag from './SelectTag';
 
 export default function LineGraphAll() {
-  const { selectListsByPresidents } = allSelects;
+  const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
+  const presidents = useSelector(selectListOnlyPresidents);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
   if (Object.keys(rowsByPresident).length === 0) {
     return <p>loading</p>;
@@ -26,8 +28,10 @@ export default function LineGraphAll() {
   };
   const data = setData();
 
-  console.log(data);
   return (
-    <Line data={data} />
+    <>
+      <SelectTag content={presidents} parentState value={presidents[0]} />
+      <Line data={data} />
+    </>
   );
 }

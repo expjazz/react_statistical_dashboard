@@ -8,9 +8,22 @@ const StyledSelect = styled.select.attrs({
 
 export default function SelectTag(props) {
   const dispatch = useDispatch();
-  const { content, action, value } = props;
+  let handleChange;
+  const {
+    content, action, value, parentState,
+  } = props;
+  if (parentState) {
+    handleChange = e => {
+      console.log(e.target.value);
+    };
+  } else {
+    handleChange = e => {
+      dispatch({ type: action, payload: e.target.value });
+    };
+  }
+
   return (
-    <StyledSelect value={value} onChange={e => dispatch({ type: action, payload: e.target.value })}>
+    <StyledSelect value={value} onChange={e => handleChange(e)}>
       {content.map((network, ind) => (
         <option key={ind} value={network}>
           {network}
