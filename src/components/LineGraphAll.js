@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
 import allSelects from '../selectors/allSelects';
 import SelectTag from './SelectTag';
+import { setIndexDataTwitter, setIndexDataFacebook, setIndexDataInstagram } from '../actionCreators/indexData';
 
 export default function LineGraphAll() {
   const dispatch = useDispatch();
@@ -21,9 +22,8 @@ export default function LineGraphAll() {
   const handleSelectChangeSocial = e => {
     switch (e.target.value) {
       case 'Twitter':
-        dispatch({
-          type: 'SET_INDEX_DATA_TWITTER',
-          payload: {
+        dispatch(setIndexDataTwitter(
+          {
             Twitter: {
               Followers: 'twitter_fans',
               Posts: 'twitter_number_posts',
@@ -31,34 +31,31 @@ export default function LineGraphAll() {
               Retweets: 'twitter_retweets',
             },
           },
-        });
+        ));
+
         break;
 
       case 'Facebook':
-        dispatch({
-          type: 'SET_INDEX_DATA_FACEBOOK',
-          payload: {
-            Facebook: {
-              Followers: 'fb_followers',
-              Likes: 'fb_number_likes',
-              Comments: 'fb_number_comments',
-              Posts: 'fb_number_posts',
-            },
+        dispatch(setIndexDataFacebook({
+          Facebook: {
+            Followers: 'fb_followers',
+            Likes: 'fb_number_likes',
+            Comments: 'fb_number_comments',
+            Posts: 'fb_number_posts',
           },
-        });
+        }));
+
         break;
       case 'Instagram':
-        dispatch({
-          type: 'SET_INDEX_DATA_INSTAGRAM',
-          payload: {
-            Instagram: {
-              Followers: 'insta_followers',
-              Comments: 'insta_number_comments',
-              Posts: 'insta_number_posts',
-              Likes: 'insta_number_likes',
-            },
+        dispatch(setIndexDataInstagram({
+          Instagram: {
+            Followers: 'insta_followers',
+            Comments: 'insta_number_comments',
+            Posts: 'insta_number_posts',
+            Likes: 'insta_number_likes',
           },
-        });
+        }));
+
         break;
       default:
         return '';
