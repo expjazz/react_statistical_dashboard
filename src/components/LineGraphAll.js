@@ -8,6 +8,7 @@ export default function LineGraphAll() {
   const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
+  const [colors, setColors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
   const handleSelectChange = e => {
     const newPresidents = [...presidentInChart, e.target.value];
@@ -17,13 +18,16 @@ export default function LineGraphAll() {
     return <p>loading</p>;
   }
   const setData = () => {
+    let count = 0;
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const dataset = [];
     presidentInChart.forEach(president => {
       const cleanedData = rowsByPresident[president].map(row => row.fb_followers);
+      if (count > colors.length - 1) count = -1;
+      count += 1;
       dataset.push({
         data: cleanedData,
-        borderColor: 'red',
+        borderColor: colors[count],
         label: president,
       });
     });
