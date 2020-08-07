@@ -47,7 +47,7 @@ function ShowData(props) {
       </select>
 
       { byMonth.map((president, ind) => (
-        <Link to={`/${president[0]}`} key={ind}>
+        <Link to={`/${president[0]}`} key={ind} onClick={e => dispatch({ type: 'SET_PRESIDENT_FILTER', payload: president[0] })}>
           <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />
         </Link>
       )) }

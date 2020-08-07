@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 
 const selectPresident = createSelector(
-  state => state.socialData,
-  socialData => socialData.info
-    .filter(row => row.profile === 'Donald Trump'),
+  state => state.socialData, state => state.filter,
+  (socialData, filter) => socialData.info
+    .filter(row => row.profile === filter.president),
 );
 
 const selectMonth = createSelector(
