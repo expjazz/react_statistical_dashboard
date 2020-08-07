@@ -20,7 +20,28 @@ const selectPresident = createSelector(
 const selectRowByPresident = createSelector(
   state => state.socialData,
   state => state.filter,
-  (socialData, filter) => socialData.info.filter(row => row.president === filter.president),
+  (socialData, filter) => socialData.info.filter(row => row.profile === filter.president),
+);
+
+const selectListsByPresidents = createSelector(
+  state => state.socialData,
+  socialData => {
+    const presidents = [];
+    const result = {};
+    socialData.info.forEach(row => {
+      if (!presidents.includes(row.profile) && row.category === 'Líderes Mundiais') presidents.push(row.profile);
+    });
+    presidents.forEach(president => {
+      socialData.info.forEach(row => {
+        if (president === row.profile && row.month === 1) {
+          result[president] = [row];
+        } else if (president === row.profile && row.month !== 1) {
+          result[president].push(row);
+        }
+      });
+    });
+    return result;
+  },
 );
 
 const selectMonth = createSelector(
@@ -71,5 +92,5 @@ const clearData = createSelector(
 );
 
 export default {
-  selectPresident, selectMonth, selectSocialMedia, clearData, selectRowByPresident,
+  selectPresident, selectMonth, selectSocialMedia, clearData, selectRowByPresident, selectListsByPresidents,
 };

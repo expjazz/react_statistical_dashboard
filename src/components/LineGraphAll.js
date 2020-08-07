@@ -1,10 +1,16 @@
 import React from 'react';
 import Line from 'chart.js';
+import { useSelector } from 'react-redux';
+import allSelects from '../selectors/allSelects';
 
 export default function LineGraphAll() {
+  const { selectListsByPresidents } = allSelects;
+  const rowsByPresident = useSelector(selectListsByPresidents);
+  console.log(rowsByPresident);
   return (
     <div>
-      Hello from the lines
+      line
+      {/* <Line /> */}
     </div>
   );
 }
