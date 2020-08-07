@@ -36,7 +36,7 @@ function ShowData(props) {
         {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
 
       </select>
-      <select name="socialMedia" id="socialMedia">
+      <select name="socialMedia" id="socialMedia" onChange={e => dispatch({ type: 'SET_SOCIAL_MEDIA_FILTER', payload: e.target.value })}>
         {socialMedia.map((network, ind) => (
           <option key={ind} value={network}>
             {network}
