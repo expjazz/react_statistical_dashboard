@@ -12,7 +12,7 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
         method: 'GET',
         headers: {
           'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-          'x-rapidapi-key': '3e6cc47ca5msh44e4a824e0c9feap1f89d8jsnf8d84bdce844',
+          'x-rapidapi-key': 'noKey',
         },
       });
       const googleJson = await googleImg.json();
