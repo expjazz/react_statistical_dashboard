@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
-import { Radar } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
 import PresidentLineBar from '../components/PresidetLineBar';
 import PresidentInfo from '../components/PresidentInfo';
 import SelectTag from '../components/SelectTag';
@@ -30,6 +30,9 @@ export default function PresidentPage() {
   return (
     <StyledPresidentPage>
       <div className="container">
+        <Link to="/dashboard">
+          Dashboard
+        </Link>
         <PresidentInfo />
 
         <SelectTag name="socialMedia" id="socialMedia" value={selectValue} content={socialMedia} action="SET_SOCIAL_MEDIA_FILTER" />

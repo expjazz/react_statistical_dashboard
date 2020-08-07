@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import './index.css';
 import Home from './pages/Home';
 import PresidentPage from './pages/PresidentPage';
+import Dashboard from './pages/Dashboard';
 import { fetchData } from './actionCreators/fetchData';
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard />
         </Route>
         <Route exact path="/:president">
           <PresidentPage />

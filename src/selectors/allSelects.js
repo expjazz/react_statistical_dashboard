@@ -6,7 +6,6 @@ const selectPresident = createSelector(
     .filter(row => row.profile === filter.president).map(row => {
       switch (filter.socialMedia) {
         case 'instagram':
-          console.log('insta');
           return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments, row.insta_number_posts, row.month];
         case 'facebook':
           return [row.profile, row.fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts, row.month];

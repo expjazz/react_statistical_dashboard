@@ -7,9 +7,7 @@ export default function PresidentLinePerGrow() {
   const { clearData } = allSelectors;
 
   const dataContent = useSelector(clearData);
-  console.log(dataContent);
-  // console.log([dataContent[0].fb, dataContent[0].twitter, dataContent[0].inst]);
-  // console.log([dataContent[1].fb, dataContent[1].twitter, dataContent[1].inst]);
+
   if (dataContent.length === 0) {
     return (
       <p>loading</p>
@@ -20,7 +18,7 @@ export default function PresidentLinePerGrow() {
     datasets: [
       {
         data: [dataContent.fb, dataContent.twitter, dataContent.inst],
-        backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f'],
+        backgroundColor: ['#3e95cd', '#8e5ea2', 'yellow'],
       },
     ],
   };

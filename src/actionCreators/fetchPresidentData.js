@@ -20,7 +20,7 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
     } else {
       image = imageParsed.query.pages[tempImage].original.source;
     }
-    console.log(image);
+    // console.log(image);
     const temp = Object.keys(textParsed.query.pages);
     const data = textParsed.query.pages[temp[0]].extract;
     dispatch({
