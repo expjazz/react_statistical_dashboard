@@ -23,13 +23,14 @@ const StyledPresidentPage = styled.div.attrs({
 export default function PresidentPage() {
   const dispatch = useDispatch();
   const socialMedia = ['instagram', 'facebook', 'twitter'];
+  const selectValue = useSelector(state => state.filter.socialMedia);
 
   return (
     <StyledPresidentPage>
       <div className="container">
         <PresidentInfo />
 
-        <SelectTag name="socialMedia" id="socialMedia" />
+        <SelectTag name="socialMedia" id="socialMedia" value={selectValue} content={socialMedia} action="SET_SOCIAL_MEDIA_FILTER" />
         <PresidentLineBar />
       </div>
     </StyledPresidentPage>
