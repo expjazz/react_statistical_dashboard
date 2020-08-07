@@ -40,7 +40,7 @@ export default function LineGraphAll() {
     <>
       <SelectTag content={presidents} parentState={handleSelectChange} value={presidents[0]} />
       <div className="socialMedia">
-        <SelectTag content={Object.keys(socialMedia)} value={Object.keys(socialMedia)[0]} parentState={handleSelectChange} />
+        {/* <SelectTag content={Object.keys(socialMedia)} value={Object.keys(socialMedia)[0]} parentState={handleSelectChange} /> */}
       </div>
       <Line data={data} />
     </>
