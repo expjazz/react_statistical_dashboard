@@ -27,8 +27,6 @@ export default function PresidentLinePerGrow() {
   };
 
   const { one, two, three } = dataGen();
-  console.log(one.length);
-  console.log(two.length);
   const data = {
     labels: ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
@@ -49,7 +47,7 @@ export default function PresidentLinePerGrow() {
   };
 
   const options = {
-
+    responsive: true,
     title: {
       display: true,
       text: 'Population growth (millions)',
