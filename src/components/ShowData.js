@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
-import { fetchData } from '../actionCreators/fetchData';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 
@@ -24,10 +23,6 @@ function ShowData(props) {
   const socialMedia = ['instagram', 'facebook', 'twitter'];
 
   const byMonth = useSelector(selectSocialMedia);
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
 
   return (
     <PresidentIndex>

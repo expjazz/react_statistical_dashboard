@@ -2,11 +2,12 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
+import { Radar } from 'react-chartjs-2';
 import PresidentLineBar from '../components/PresidetLineBar';
 import PresidentInfo from '../components/PresidentInfo';
-import allSelectors from '../selectors/allSelects';
 import SelectTag from '../components/SelectTag';
 import PresidentLinePerGrow from '../components/PresidentLinePerGrow';
+import RadarChart from '../components/RadarChart';
 
 const StyledPresidentPage = styled.div.attrs({
   className: 'w-full bg-blue-300',
@@ -35,6 +36,9 @@ export default function PresidentPage() {
         <PresidentLineBar />
         <p>other graph</p>
         <PresidentLinePerGrow />
+        <p>radar</p>
+        <RadarChart />
+
       </div>
     </StyledPresidentPage>
   );
