@@ -8,26 +8,7 @@ export default function LineGraphAll() {
   const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
-  const [socialMedia, setSocialMedia] = useState({
-    Twitter: {
-      Followers: 'twitter_fans',
-      Posts: 'twitter_number_posts',
-      Likes: 'twitter_number_likes',
-      Retweets: 'twitter_retweets',
-    },
-    Facebook: {
-      Followers: 'fb_followers',
-      Likes: 'fb_number_likes',
-      Comments: 'fb_number_comments',
-      Posts: 'fb_number_posts',
-    },
-    Instagram: {
-      Followers: 'insta_followers',
-      Comments: 'insta_number_comments',
-      Posts: 'insta_number_posts',
-      Likes: 'insta_number_likes',
-    },
-  });
+
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
   const handleSelectChange = e => {
