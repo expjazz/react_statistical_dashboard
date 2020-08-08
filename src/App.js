@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import PresidentPage from './pages/PresidentPage';
 import Dashboard from './pages/Dashboard';
 import { fetchData } from './actionCreators/fetchData';
+import Navbar from './components/Navbar';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function App() {
   return (
 
     <div className="App">
+      <Navbar />
       <Switch>
         <Route exact path="/">
           <Home />
