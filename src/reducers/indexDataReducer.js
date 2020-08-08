@@ -1,11 +1,11 @@
 const defaultState = {
   social: {
-    Twitter: {
-      Followers: 'twitter_fans',
-      Posts: 'twitter_number_posts',
-      Likes: 'twitter_number_likes',
-      Retweets: 'twitter_retweets',
-    },
+    Twitter: [
+      ['Followers', 'twitter_fans'],
+      ['Posts', 'twitter_number_posts'],
+      ['Likes', 'twitter_number_likes'],
+      ['Retweets', 'twitter_retweets'],
+    ],
   },
 
 };

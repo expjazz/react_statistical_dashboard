@@ -13,7 +13,8 @@ export default function LineGraphAll() {
   const socialMedia = useSelector(state => state.indexDataReducer.social);
   const socialMediaTags = useSelector(state => state.indexDataReducer.social);
   const currentTag = Object.keys(socialMediaTags)[0];
-  const tags = Object.keys(socialMediaTags[currentTag]);
+  const tags = socialMediaTags[currentTag].map(row => row[0]);
+  const [currentQuery, setCurrentQuery] = useState(['Followers', 'twitter_fans']);
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
   const handleSelectChangePresident = e => {
@@ -21,17 +22,22 @@ export default function LineGraphAll() {
     setPresidentInChart(newPresidents);
   };
 
+  const handleSearchQuery = e => {
+    const toState = socialMedia[currentTag].find(row => row[0] === e.target.value);
+    setCurrentQuery(toState);
+  };
+
   const handleSelectChangeSocial = e => {
     switch (e.target.value) {
       case 'Twitter':
         dispatch(setIndexDataTwitter(
           {
-            Twitter: {
-              Followers: 'twitter_fans',
-              Posts: 'twitter_number_posts',
-              Likes: 'twitter_number_likes',
-              Retweets: 'twitter_retweets',
-            },
+            Twitter: [
+              ['Followers', 'twitter_fans'],
+              ['Posts', 'twitter_number_posts'],
+              ['Likes', 'twitter_number_likes'],
+              ['Retweets', 'twitter_retweets'],
+            ],
           },
         ));
 
@@ -67,6 +73,7 @@ export default function LineGraphAll() {
     return <p>loading</p>;
   }
   const setData = social => {
+    console.log(social);
     let count = 0;
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const dataset = [];
@@ -82,7 +89,8 @@ export default function LineGraphAll() {
     });
     return { labels, datasets: dataset };
   };
-  const data = setData('fb_followers');
+  console.log(currentQuery);
+  const data = setData(currentQuery[1]);
 
   return (
     <>
@@ -91,7 +99,7 @@ export default function LineGraphAll() {
         <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMedia)[0]} parentState={handleSelectChangeSocial} />
       </div>
       <div className="socialTags">
-        <SelectTag content={tags} value={currentTag} />
+        <SelectTag content={tags} value={currentQuery[0]} parentState={handleSearchQuery} />
       </div>
       <Line data={data} />
     </>
