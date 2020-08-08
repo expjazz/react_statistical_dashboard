@@ -15,7 +15,7 @@ export default (state = defaultState, action) => {
     case 'SET_PRESIDENT_IN_CHART':
       return {
         ...state,
-        currentQuery: action.payload,
+        presidentInChart: action.payload,
       };
     default:
       return state;

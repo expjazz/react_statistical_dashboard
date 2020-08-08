@@ -7,25 +7,31 @@ import { setIndexDataTwitter, setIndexDataFacebook, setIndexDataInstagram } from
 
 export default function LineGraphAll() {
   const dispatch = useDispatch();
-
   const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
   const socialMediaTags = useSelector(state => state.indexDataReducer.social);
   const currentTag = Object.keys(socialMediaTags)[0];
-
   const tags = socialMediaTags[currentTag].map(row => row[0]);
   const [currentQuery, setCurrentQuery] = useState(useSelector(state => state.lineGraphAll.currentQuery));
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
-  const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
+  const [presidentInChart, setPresidentInChart] = useState(useSelector(state => state.lineGraphAll.presidentInChart));
   const handleSelectChangePresident = e => {
     const newPresidents = [...presidentInChart, e.target.value];
     setPresidentInChart(newPresidents);
+    dispatch({
+      type: 'SET_PRESIDENT_IN_CHART',
+      payload: newPresidents,
+    });
   };
 
   const handleSearchQuery = e => {
     const toState = socialMediaTags[currentTag].find(row => row[0] === e.target.value);
     setCurrentQuery(toState);
+    dispatch({
+      type: 'SET_CURRENT_QUERY',
+      payload: toState,
+    });
   };
 
   const handleSelectChangeSocial = e => {
@@ -96,7 +102,7 @@ export default function LineGraphAll() {
 
   return (
     <>
-      <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart} />
+      <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart[-1]} />
       <div className="socialMedia">
         <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMediaTags)[0]} parentState={handleSelectChangeSocial} />
       </div>
