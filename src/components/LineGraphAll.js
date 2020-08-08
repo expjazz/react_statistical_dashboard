@@ -11,7 +11,9 @@ export default function LineGraphAll() {
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
   const socialMedia = useSelector(state => state.indexDataReducer.social);
-  console.log(socialMedia);
+  const socialMediaTags = useSelector(state => state.indexDataReducer.social);
+  const currentTag = Object.keys(socialMediaTags)[0];
+  const tags = Object.keys(socialMediaTags[currentTag]);
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
   const handleSelectChangePresident = e => {
@@ -87,6 +89,9 @@ export default function LineGraphAll() {
       <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidents[0]} />
       <div className="socialMedia">
         <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMedia)[0]} parentState={handleSelectChangeSocial} />
+      </div>
+      <div className="socialTags">
+        <SelectTag content={tags} value={currentTag} />
       </div>
       <Line data={data} />
     </>
