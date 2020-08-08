@@ -8,10 +8,12 @@ import PresidentCard from './PresidentCard';
 
 const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
-  className: 'w-full bg-gray-900',
+  className: 'w-full bg-gray-300 opacity-50 pt-4',
 })`
  &{
-   /* height: 100vh; */
+   .container {
+     ${tw`bg-white`}
+   }
  }
 
 `;
@@ -26,26 +28,20 @@ function ShowData(props) {
 
   return (
     <PresidentIndex>
-      haha
-      <h1>tailwind</h1>
-      <select name="months" id="months" onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
-        {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
+      <div className="container">
 
-      </select>
-      <select name="socialMedia" id="socialMedia" onChange={e => dispatch({ type: 'SET_SOCIAL_MEDIA_FILTER', payload: e.target.value })}>
-        {socialMedia.map((network, ind) => (
-          <option key={ind} value={network}>
-            {network}
-          </option>
-        ))}
+        <select name="months" id="months" onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
+          {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
 
-      </select>
+        </select>
 
-      { byMonth.map((president, ind) => (
-        <Link to={`/${president[0]}`} key={ind} onClick={e => dispatch({ type: 'SET_PRESIDENT_FILTER', payload: president[0] })}>
-          <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />
-        </Link>
-      )) }
+        { byMonth.map((president, ind) => (
+          <Link to={`/${president[0]}`} key={ind} onClick={e => dispatch({ type: 'SET_PRESIDENT_FILTER', payload: president[0] })}>
+            <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />
+          </Link>
+        )) }
+      </div>
+
     </PresidentIndex>
   );
 }

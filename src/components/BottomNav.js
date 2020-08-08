@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
+import { useDispatch } from 'react-redux';
 
 const StyledBottomNav = styled.div.attrs({
   className: 'w-100 flex justify-center',
 })`
+
+  height: 40px;
   &{
     button {
       position: relative;
@@ -32,19 +35,20 @@ const StyledBottomNav = styled.div.attrs({
      
     }
   }
-
+  }
 `;
-
 export default function BottomNav() {
+  const dispatch = useDispatch();
   const handleData = e => {
     e.preventDefault();
+    dispatch({ type: 'SET_SOCIAL_MEDIA_FILTER', payload: e.target.innerText });
     console.log(e.target.innerText);
   };
   return (
     <StyledBottomNav>
-      <button type="submit" onClick={handleData}>Twitter</button>
-      <button type="submit" onClick={handleData}>Facebook</button>
-      <button type="submit" onClick={handleData}>Instagram</button>
+      <button type="submit" onClick={handleData}>twitter</button>
+      <button type="submit" onClick={handleData}>facebook</button>
+      <button type="submit" onClick={handleData}>instagram</button>
 
     </StyledBottomNav>
   );
