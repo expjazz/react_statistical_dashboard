@@ -5,6 +5,7 @@ import getInfoPresident from './infoPresident';
 import indexDataReducer from './indexDataReducer';
 import lineGraphAll from './lineGraphAllStateReducer';
 import pieChartAll from './pieChartAllReducer';
+import commonData from './commonDataReducer';
 
 export default combineReducers({
   socialData,
@@ -13,4 +14,5 @@ export default combineReducers({
   indexDataReducer,
   lineGraphAll,
   pieChartAll,
+  commonData,
 });

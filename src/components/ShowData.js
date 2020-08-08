@@ -12,7 +12,10 @@ const PresidentIndex = styled.div.attrs({
 })`
  &{
    .container {
-     ${tw`bg-white`}
+     ${tw`bg-white mx-auto flex flex-col`}
+    select {
+      ${tw`self-end`}
+    }
    }
  }
 
@@ -31,6 +34,7 @@ function ShowData(props) {
       <div className="container">
 
         <select name="months" id="months" onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
+          <option> Month </option>
           {numberMonths.map(num => <option key={num} value={`${num}`}>{num}</option>)}
 
         </select>
