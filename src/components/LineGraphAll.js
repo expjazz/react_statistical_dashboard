@@ -7,13 +7,15 @@ import { setIndexDataTwitter, setIndexDataFacebook, setIndexDataInstagram } from
 
 export default function LineGraphAll() {
   const dispatch = useDispatch();
+
   const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
   const socialMediaTags = useSelector(state => state.indexDataReducer.social);
   const currentTag = Object.keys(socialMediaTags)[0];
+
   const tags = socialMediaTags[currentTag].map(row => row[0]);
-  const [currentQuery, setCurrentQuery] = useState(['Followers', 'twitter_fans']);
+  const [currentQuery, setCurrentQuery] = useState(useSelector(state => state.lineGraphAll.currentQuery));
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
   const [presidentInChart, setPresidentInChart] = useState(['Donald Trump']);
   const handleSelectChangePresident = e => {
