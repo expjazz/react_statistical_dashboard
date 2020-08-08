@@ -1,9 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import pieSelector from '../selectors/filterPieChart';
 
 export default function PieChartAll() {
-  // grab the data
+  const { selectPieChartData } = pieSelector;
+  const data = useSelector(selectPieChartData);
+  console.log(data);
 
-  // treat the data
+  // grab tthe data
   // pass to chart
   // do event listeners to change the data
   return (
