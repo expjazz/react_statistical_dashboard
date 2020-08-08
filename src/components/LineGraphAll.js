@@ -10,7 +10,6 @@ export default function LineGraphAll() {
   const { selectListsByPresidents, selectListOnlyPresidents } = allSelects;
   const rowsByPresident = useSelector(selectListsByPresidents);
   const presidents = useSelector(selectListOnlyPresidents);
-  const socialMedia = useSelector(state => state.indexDataReducer.social);
   const socialMediaTags = useSelector(state => state.indexDataReducer.social);
   const currentTag = Object.keys(socialMediaTags)[0];
   const tags = socialMediaTags[currentTag].map(row => row[0]);
@@ -23,13 +22,14 @@ export default function LineGraphAll() {
   };
 
   const handleSearchQuery = e => {
-    const toState = socialMedia[currentTag].find(row => row[0] === e.target.value);
+    const toState = socialMediaTags[currentTag].find(row => row[0] === e.target.value);
     setCurrentQuery(toState);
   };
 
   const handleSelectChangeSocial = e => {
     switch (e.target.value) {
       case 'Twitter':
+        setCurrentQuery(['Followers', 'twitter_fans']);
         dispatch(setIndexDataTwitter(
           {
             Twitter: [
@@ -44,24 +44,26 @@ export default function LineGraphAll() {
         break;
 
       case 'Facebook':
+        setCurrentQuery(['Followers', 'fb_followers']);
         dispatch(setIndexDataFacebook({
-          Facebook: {
-            Followers: 'fb_followers',
-            Likes: 'fb_number_likes',
-            Comments: 'fb_number_comments',
-            Posts: 'fb_number_posts',
-          },
+          Facebook: [
+            ['Followers', 'fb_followers'],
+            [' Likes', 'fb_number_likes'],
+            ['Comments', 'fb_number_comments'],
+            ['Posts', 'fb_number_posts'],
+          ],
         }));
 
         break;
       case 'Instagram':
+        setCurrentQuery(['Followers', 'insta_followers']);
         dispatch(setIndexDataInstagram({
-          Instagram: {
-            Followers: 'insta_followers',
-            Comments: 'insta_number_comments',
-            Posts: 'insta_number_posts',
-            Likes: 'insta_number_likes',
-          },
+          Instagram: [
+            ['Followers', 'insta_followers'],
+            ['Comments', 'insta_number_comments'],
+            ['Posts', 'insta_number_posts'],
+            ['Likes', 'insta_number_likes'],
+          ],
         }));
 
         break;
@@ -73,7 +75,6 @@ export default function LineGraphAll() {
     return <p>loading</p>;
   }
   const setData = social => {
-    console.log(social);
     let count = 0;
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const dataset = [];
@@ -89,14 +90,13 @@ export default function LineGraphAll() {
     });
     return { labels, datasets: dataset };
   };
-  console.log(currentQuery);
   const data = setData(currentQuery[1]);
 
   return (
     <>
-      <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidents[0]} />
+      <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart} />
       <div className="socialMedia">
-        <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMedia)[0]} parentState={handleSelectChangeSocial} />
+        <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMediaTags)[0]} parentState={handleSelectChangeSocial} />
       </div>
       <div className="socialTags">
         <SelectTag content={tags} value={currentQuery[0]} parentState={handleSearchQuery} />
