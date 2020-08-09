@@ -13,20 +13,31 @@ const StyledPresidentInfo = styled.div.attrs({
     top: 0;
     left: 0;
     height: 50%;
-    ${tw`bg-purple-500 absolute`}
+    ${tw`bg-gray-100 absolute`}
     &:after {
-      height: 2ren;
-      bottom: -1;
-      background: red;
-      content: "after";
-      width: 50%;
-      position: absolute;
-      /* transform: translateX(-50%); */
-      transition: width 0.4s;
-      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
+      height: 100px;
+      bottom: -100px;
+      ${tw`bg-gray-100 absolute`}
+
+      content: "";
+      width: 25%;
+      transform: skewX(50deg);
+    
+
       left: 50%;
       /* margin-top: 2rem; */
       }
+    &:before {
+      height: 100px;
+      bottom: -100px;
+      ${tw`bg-gray-100 absolute`}
+      content: "";
+      width: 30%;
+      /* transform: skewX(50deg); */
+    
+
+      left: 70%;
+    }
     }
 
   }
