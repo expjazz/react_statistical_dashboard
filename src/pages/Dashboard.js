@@ -8,7 +8,10 @@ const StyledDashboard = styled.div.attrs({
 })`
   & {
     .container {
-      ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl border-t-2`}
+      ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl border-t-2 text-center py-10`}
+      h1 {
+        ${tw`text-4xl`}
+      }
     }
   }
 `;

@@ -110,7 +110,7 @@ export default function LineGraphAll() {
 
   return (
     <>
-      <div className="selectContainers flex px-30 justify-center">
+      <div className="selectContainers flex px-30 justify-center py-10">
 
         <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart[-1]} />
         <div className="socialMedia">

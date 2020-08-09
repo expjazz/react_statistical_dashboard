@@ -39,7 +39,8 @@ export default function PieChartAll() {
     responsive: true,
     title: {
       display: true,
-      text: queryPresidents.join(' '),
+      text: `Percentage of followers by each social medya by presidents: ${queryPresidents.join(' ')}`,
+      fontSize: 18,
     },
     barValueSpacing: 20,
     scales: {
@@ -54,7 +55,6 @@ export default function PieChartAll() {
   return (
     <div>
       <SelectTag value={president} content={presidents} parentState={handleQuery} />
-      Hello from Pie
       <Pie data={data} options={options} />
     </div>
   );
