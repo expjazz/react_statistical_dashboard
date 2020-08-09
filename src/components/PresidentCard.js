@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
+import { Link } from 'react-router-dom';
 
 const StyledPresidentCard = styled.tr.attrs({
   className: 'text-center',
 })`
   & {
+    a {
+      ${tw`text-center`}
+    }
     .left {
       ${tw`w-1/6`}
     }
@@ -27,20 +31,39 @@ export default function PresidentCard(props) {
   } = props;
   return (
     <StyledPresidentCard>
+
       <td>
-        {president}
+        <Link to={`/:${president}`}>
+          {president}
+        </Link>
       </td>
       <td>
-        {followers}
+        <Link to={`/:${president}`}>
+
+          {followers}
+        </Link>
+
       </td>
       <td>
-        {likes}
+        <Link to={`/:${president}`}>
+
+          {likes}
+        </Link>
+
       </td>
       <td>
-        {comments}
+        <Link to={`/:${president}`}>
+
+          {comments}
+        </Link>
+
       </td>
       <td>
-        {posts}
+        <Link to={`/:${president}`}>
+
+          {posts}
+        </Link>
+
       </td>
     </StyledPresidentCard>
   );
