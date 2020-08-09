@@ -52,7 +52,7 @@ const selectMonth = createSelector(
 
 const selectSocialMedia = createSelector(
   state => state.socialData, state => state.filter,
-  (socialData, filter) => socialData.info.filter(row => row.month === filter.month).map(row => {
+  (socialData, filter) => socialData.info.filter(row => row.month === filter.month && row.category === 'Líderes Mundiais').map(row => {
     switch (filter.socialMedia) {
       case 'instagram':
         return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments, row.insta_number_posts];

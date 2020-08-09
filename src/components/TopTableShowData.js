@@ -10,14 +10,15 @@ const StyledTr = styled.tr.attrs({
   }
 `;
 
-export default function TopTableShowData() {
+export default function TopTableShowData(props) {
+  const { sortBy } = props;
   return (
     <StyledTr>
       <th>President</th>
-      <th>Followers</th>
-      <th>Likes</th>
-      <th>Comments</th>
-      <th>Posts</th>
+      <th onClick={e => sortBy(e.target.innerText)}>Followers</th>
+      <th onClick={e => sortBy(e.target.innerText)}>Likes</th>
+      <th onClick={e => sortBy(e.target.innerText)}>Comments</th>
+      <th onClick={e => sortBy(e.target.innerText)}>Posts</th>
     </StyledTr>
   );
 }
