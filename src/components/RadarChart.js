@@ -22,7 +22,15 @@ export default function PresidentLinePerGrow() {
       },
     ],
   };
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      fontSize: 30,
+      text: 'Percentage of followers in each social media',
+    },
+  };
   return (
-    <Pie data={data} />
+    <Pie data={data} options={options} height="75" />
   );
 }

@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
 const StyledSelect = styled.select.attrs({
-  className: 'w-25',
-})``;
+  className: 'w-25 bg-white flex content-center focus:outline-none',
+})`
+
+
+`;
 
 export default function SelectTag(props) {
   const dispatch = useDispatch();

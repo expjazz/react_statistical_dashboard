@@ -32,7 +32,7 @@ export default function PresidentLinePerGrow() {
 
     datasets: [
       {
-        label: 'Followers',
+        label: 'Followers Gained',
         backgroundColor: 'red',
         data: one,
       },
@@ -50,7 +50,8 @@ export default function PresidentLinePerGrow() {
     responsive: true,
     title: {
       display: true,
-      text: 'Population growth (millions)',
+      fontSize: 30,
+      text: 'Followers Growth per Post',
     },
     barValueSpacing: 20,
     scales: {
@@ -63,6 +64,6 @@ export default function PresidentLinePerGrow() {
 
   };
   return (
-    <Bar data={data} options={options} />
+    <Bar data={data} options={options} height="75" />
   );
 }

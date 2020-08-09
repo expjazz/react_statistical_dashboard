@@ -6,9 +6,7 @@ import PieChartAll from './PieChartAll';
 export default function DashboardCharts() {
   return (
     <div>
-      <Link to="/">
-        Home
-      </Link>
+
       <LineGraphAll />
       <PieChartAll />
     </div>

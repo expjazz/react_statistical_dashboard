@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import PresidentLineBar from '../components/PresidetLineBar';
@@ -22,7 +22,6 @@ const StyledPresidentPage = styled.div.attrs({
 `;
 
 export default function PresidentPage() {
-  const dispatch = useDispatch();
   const socialMedia = ['instagram', 'facebook', 'twitter'];
   const selectValue = useSelector(state => state.filter.socialMedia);
 
@@ -33,9 +32,7 @@ export default function PresidentPage() {
 
         <SelectTag name="socialMedia" id="socialMedia" value={selectValue} content={socialMedia} action="SET_SOCIAL_MEDIA_FILTER" />
         <PresidentLineBar />
-        <p>other graph</p>
         <PresidentLinePerGrow />
-        <p>radar</p>
         <RadarChart />
 
       </div>

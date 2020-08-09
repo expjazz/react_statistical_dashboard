@@ -99,17 +99,29 @@ export default function LineGraphAll() {
     return { labels, datasets: dataset };
   };
   const data = setData(currentQuery[1]);
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      fontSize: 20,
+      text: 'Compare Presidents by Social Media',
+    },
+  };
 
   return (
     <>
-      <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart[-1]} />
-      <div className="socialMedia">
-        <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMediaTags)[0]} parentState={handleSelectChangeSocial} />
+      <div className="selectContainers flex px-30 justify-center">
+
+        <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart[-1]} />
+        <div className="socialMedia">
+          <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMediaTags)[0]} parentState={handleSelectChangeSocial} />
+        </div>
+        <div className="socialTags">
+          <SelectTag content={tags} value={currentQuery[0]} parentState={handleSearchQuery} />
+        </div>
       </div>
-      <div className="socialTags">
-        <SelectTag content={tags} value={currentQuery[0]} parentState={handleSearchQuery} />
-      </div>
-      <Line data={data} />
+
+      <Line data={data} height={75} options={options} />
     </>
   );
 }

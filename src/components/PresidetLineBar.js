@@ -13,7 +13,6 @@ export default function PresidetLineBar() {
       three: [],
       four: [],
     };
-    console.log(presidentData);
     presidentData.forEach(row => {
       obj.one.push(row[1]);
       obj.two.push(row[2]);
@@ -53,7 +52,15 @@ export default function PresidetLineBar() {
       },
     ],
   };
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      fontSize: 30,
+      text: 'General Data Per Month',
+    },
+  };
   return (
-    <Line data={data} height="75" />
+    <Line data={data} options={options} height="75" />
   );
 }
