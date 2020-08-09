@@ -39,7 +39,7 @@ export default function TopNav() {
           <img src="logo.png" alt="" />
         </div>
         <div className="links">
-          <Link to="/">
+          <Link to="/index">
             Home
           </Link>
           <Link to="/dashboard">

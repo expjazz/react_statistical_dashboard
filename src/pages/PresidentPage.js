@@ -10,11 +10,11 @@ import PresidentLinePerGrow from '../components/PresidentLinePerGrow';
 import RadarChart from '../components/RadarChart';
 
 const StyledPresidentPage = styled.div.attrs({
-  className: 'w-full bg-blue-300',
+  className: 'w-full bg-gray-300 pt-4',
 })` 
   &{
     .container {
-      ${tw`bg-white mx-auto shadow-lg opacity-75`}
+      ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl`}
     }
     img {
       ${tw`w-56`}

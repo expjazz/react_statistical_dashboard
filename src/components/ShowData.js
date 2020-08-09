@@ -13,7 +13,7 @@ const PresidentIndex = styled.div.attrs({
 })`
  &{
    .container {
-     ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl`}
+     ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl border-t-2`}
     select {
       ${tw`self-end bg-white`}
       color: #423e3e;
@@ -80,7 +80,7 @@ function ShowData(props) {
 
             { byMonth.map((president, ind) => (
 
-              <PresidentCard followers={president[1] || 'null'} likes={president[2] || 'null'} comments={president[3] || 'null'} posts={president[4] || 'null'} president={president[0]} key={ind} />
+              <PresidentCard followers={president[1] || '-'} likes={president[2] || '-'} comments={president[3] || '-'} posts={president[4] || '-'} president={president[0]} back={ind} key={ind} />
             )) }
           </tbody>
         </table>

@@ -7,6 +7,7 @@ import PresidentPage from './pages/PresidentPage';
 import Dashboard from './pages/Dashboard';
 import { fetchData } from './actionCreators/fetchData';
 import Navbar from './components/Navbar';
+import IntroPage from './pages/IntroPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/">
+          <IntroPage />
+        </Route>
+        <Route exact path="/index">
+
           <Home />
         </Route>
         <Route exact path="/dashboard">

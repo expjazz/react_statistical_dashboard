@@ -8,6 +8,7 @@ import { setPresidentFilter } from '../actionCreators/filters';
 const StyledPresidentCard = styled.tr.attrs({
   className: 'text-center',
 })`
+  z-index: -1;
   & {
     td {
       color: gray;
@@ -36,14 +37,15 @@ const StyledPresidentCard = styled.tr.attrs({
 `;
 export default function PresidentCard(props) {
   const {
-    president, followers, likes, comments, posts,
+    president, followers, likes, comments, posts, back,
   } = props;
   const dispatch = useDispatch();
   const changePresidentFilter = () => {
     dispatch(setPresidentFilter(president));
   };
+  const fluidBg = back % 2 === 0 ? 'bg-gray-100' : '';
   return (
-    <StyledPresidentCard>
+    <StyledPresidentCard className={fluidBg}>
 
       <td>
         <Link to={`/${president}`} className="president" onClick={changePresidentFilter}>

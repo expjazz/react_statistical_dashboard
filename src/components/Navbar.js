@@ -22,7 +22,6 @@ export default function Navbar() {
   return (
     <>
       <TopNav />
-      <BottomNav />
     </>
   );
 }
