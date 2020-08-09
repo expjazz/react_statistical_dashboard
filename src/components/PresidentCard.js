@@ -9,6 +9,13 @@ const StyledPresidentCard = styled.tr.attrs({
   className: 'text-center',
 })`
   & {
+    td {
+      color: gray;
+    }
+    .president {
+      color: black;
+    }
+
     a {
       ${tw`text-center`}
     }
@@ -39,7 +46,7 @@ export default function PresidentCard(props) {
     <StyledPresidentCard>
 
       <td>
-        <Link to={`/${president}`} onClick={changePresidentFilter}>
+        <Link to={`/${president}`} className="president" onClick={changePresidentFilter}>
           {president}
         </Link>
       </td>

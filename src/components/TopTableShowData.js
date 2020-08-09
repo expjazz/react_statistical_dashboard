@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 const StyledTr = styled.tr.attrs({
-  className: 'w-100',
+  className: 'w-100 bg-gray-300 border-gray-500 border-t-2 border-b-2',
 })`
   & {
+    th {
+      color: gray;
+    }
 
   }
 `;

@@ -9,11 +9,11 @@ import TopTableShowData from './TopTableShowData';
 
 const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
-  className: 'w-full bg-gray-300 opacity-50 pt-4',
+  className: 'w-full bg-gray-300 pt-4',
 })`
  &{
    .container {
-     ${tw`bg-white mx-auto flex flex-col`}
+     ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl`}
     select {
       ${tw`self-end bg-white`}
       color: #423e3e;
