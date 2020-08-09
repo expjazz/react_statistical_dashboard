@@ -41,13 +41,20 @@ const StyledPresidentInfo = styled.div.attrs({
     }
 
   }
-  .content {
+  .contentShow {
     position: absolute;
+    
     top: 0;
     left: 0;
   }
+
+  .content {
+    ${tw`pt-16 mb-32 px-32`}
+
+  }
   img {
     float: right;
+    ${tw`shadow-xl border-4 rounded-full`}
   }
   .title, .bottom {
   }
@@ -66,10 +73,8 @@ export default function PresidentInfo() {
   return (
     <StyledPresidentInfo>
 
-      <div className="contenthidden opacity-0">
-        <div className="innerBg">
-          ha
-        </div>
+      <div className="content opacity-0">
+        <div className="innerBg" />
 
         <div className="title">
 
@@ -83,10 +88,8 @@ export default function PresidentInfo() {
           <p>{presidentData.president.text}</p>
         </div>
       </div>
-      <div className="innerBg">
-        ha
-      </div>
-      <div className="content">
+      <div className="innerBg" />
+      <div className="content contentShow">
 
         <div className="title">
 
