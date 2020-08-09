@@ -15,7 +15,7 @@ function App() {
     dispatch(fetchData());
   }, [dispatch]);
   return (
-
+    // for
     <div className="App">
       <Navbar />
       <Switch>
