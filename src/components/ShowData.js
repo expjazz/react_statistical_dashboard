@@ -34,25 +34,25 @@ function ShowData(props) {
   const byMonth = useSelector(selectSocialMedia);
   const month = useSelector(state => state.filter.month);
   const sortBy = value => {
-    switch (value) {
-      case 'Followers':
+    switch (value.toLowerCase()) {
+      case 'followers':
         dispatch({
           type: 'SET_MONTH_FILTER', payload: { month, currentSort: 1 },
         });
         break;
-      case 'Likes':
+      case 'likes':
         dispatch({
           type: 'SET_MONTH_FILTER', payload: { month, currentSort: 2 },
         });
         break;
 
-      case 'Comments':
+      case 'comments':
         dispatch({
           type: 'SET_MONTH_FILTER', payload: { month, currentSort: 3 },
         });
         break;
 
-      case 'Posts':
+      case 'posts':
         dispatch({
           type: 'SET_MONTH_FILTER', payload: { month, currentSort: 4 },
         });

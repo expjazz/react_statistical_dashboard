@@ -8,6 +8,9 @@ const StyledTr = styled.tr.attrs({
   & {
     th {
       color: gray;
+      text-transform: uppercase;
+      font-weight: 300;
+      ${tw`cursor-pointer`}
     }
 
   }
