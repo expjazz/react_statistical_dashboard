@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
 
 const StyledIntro = styled.div.attrs({

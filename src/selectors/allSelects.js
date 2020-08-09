@@ -78,6 +78,7 @@ const selectListOnlyPresidents = createSelector(
       presidents.push(row.profile);
       return row.profile;
     }
+    return '';
   }),
 );
 

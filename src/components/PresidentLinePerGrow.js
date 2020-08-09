@@ -26,7 +26,7 @@ export default function PresidentLinePerGrow() {
     return { ...obj, one: tempArr };
   };
 
-  const { one, two, three } = dataGen();
+  const { one, two } = dataGen();
   const data = {
     labels: ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
-import { Link } from 'react-router-dom';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 import TopTableShowData from './TopTableShowData';
