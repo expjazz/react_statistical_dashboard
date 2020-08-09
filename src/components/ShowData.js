@@ -5,6 +5,7 @@ import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
+import TopTableShowData from './TopTableShowData';
 
 const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
@@ -18,6 +19,9 @@ const PresidentIndex = styled.div.attrs({
       color: #423e3e;
 
     }
+    table {
+      ${tw`w-100`}
+    }
    }
  }
 
@@ -27,6 +31,7 @@ function ShowData(props) {
   const dispatch = useDispatch();
   const numberMonths = useSelector(state => state.commonData.months);
   const byMonth = useSelector(selectSocialMedia);
+  console.log(byMonth);
 
   return (
     <PresidentIndex>
@@ -36,13 +41,15 @@ function ShowData(props) {
           {numberMonths.map((month, num) => <option key={num} value={`${num + 1} `}>{month}</option>)}
 
         </select>
+        <table>
+          <TopTableShowData />
 
-        { byMonth.map((president, ind) => (
+          { byMonth.map((president, ind) => (
 
-          <Link to={`/${president[0]}`} key={ind} onClick={e => dispatch({ type: 'SET_PRESIDENT_FILTER', payload: president[0] })}>
-            <PresidentCard fbFollowers={president[1] || 'null'} fbLikes={president[2] || 'null'} president={president[0]} key={ind} />
-          </Link>
-        )) }
+            <PresidentCard followers={president[1] || 'null'} likes={president[2] || 'null'} comments={president[3] || 'null'} posts={president[4] || 'null'} president={president[0]} key={ind} />
+          )) }
+        </table>
+
       </div>
 
     </PresidentIndex>

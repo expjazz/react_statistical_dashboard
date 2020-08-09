@@ -55,7 +55,7 @@ const selectSocialMedia = createSelector(
   (socialData, filter) => socialData.info.filter(row => row.month === filter.month).map(row => {
     switch (filter.socialMedia) {
       case 'instagram':
-        return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments];
+        return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments, row.insta_number_posts];
 
       case 'facebook':
         return [row.profile, row.fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts];

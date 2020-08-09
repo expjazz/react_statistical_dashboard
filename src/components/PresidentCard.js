@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
-const StyledPresidentCard = styled.div.attrs({
-  className: 'w-4/5  flex justify-around bg-pink-600 mx-auto h-10 rounded align-center items-center shadow-xs opacity-90',
+const StyledPresidentCard = styled.tr.attrs({
+  className: 'text-center',
 })`
   & {
+    .left {
+      ${tw`w-1/6`}
+    }
     .center {
-      ${tw`flex`}
+      ${tw`flex w-100`}
     }
     .content {
       ${tw`flex`}
@@ -19,31 +22,26 @@ const StyledPresidentCard = styled.div.attrs({
 
 `;
 export default function PresidentCard(props) {
-  const { president, fbFollowers, fbLikes } = props;
+  const {
+    president, followers, likes, comments, posts,
+  } = props;
   return (
     <StyledPresidentCard>
-      <div className="left">
+      <td>
         {president}
-      </div>
-      <div className="center">
-        <div className="insta">
-          <div className="content">
-            <div className="title">
-              <p>  Followers: </p>
-              {fbFollowers}
-            </div>
-            <div className="sub">
-              <p>  Likes: </p>
-              {fbLikes}
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div className="rigth">
-        Some content
-      </div>
+      </td>
+      <td>
+        {followers}
+      </td>
+      <td>
+        {likes}
+      </td>
+      <td>
+        {comments}
+      </td>
+      <td>
+        {posts}
+      </td>
     </StyledPresidentCard>
   );
 }
