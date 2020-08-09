@@ -23,6 +23,7 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
     // console.log(image);
     const temp = Object.keys(textParsed.query.pages);
     const data = textParsed.query.pages[temp[0]].extract;
+    console.log(president);
     dispatch({
       type: 'GET_INFO_PRESIDENT', payload: { text: data, image },
     });

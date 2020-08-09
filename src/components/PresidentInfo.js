@@ -14,6 +14,7 @@ export default function PresidentInfo() {
   const dispatch = useDispatch();
   const presidentData = useSelector(state => state.getInfoPresident);
   useEffect(() => {
+    console.log('here?');
     dispatch(fetchPresidentData());
   }, [dispatch]);
   return (

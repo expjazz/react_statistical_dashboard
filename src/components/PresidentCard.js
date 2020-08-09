@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setPresidentFilter } from '../actionCreators/filters';
 
 const StyledPresidentCard = styled.tr.attrs({
   className: 'text-center',
@@ -29,37 +31,41 @@ export default function PresidentCard(props) {
   const {
     president, followers, likes, comments, posts,
   } = props;
+  const dispatch = useDispatch();
+  const changePresidentFilter = () => {
+    dispatch(setPresidentFilter(president));
+  };
   return (
     <StyledPresidentCard>
 
       <td>
-        <Link to={`/:${president}`}>
+        <Link to={`/${president}`} onClick={changePresidentFilter}>
           {president}
         </Link>
       </td>
       <td>
-        <Link to={`/:${president}`}>
+        <Link to={`/${president}`}>
 
           {followers}
         </Link>
 
       </td>
       <td>
-        <Link to={`/:${president}`}>
+        <Link to={`/${president}`}>
 
           {likes}
         </Link>
 
       </td>
       <td>
-        <Link to={`/:${president}`}>
+        <Link to={`/${president}`}>
 
           {comments}
         </Link>
 
       </td>
       <td>
-        <Link to={`/:${president}`}>
+        <Link to={`/${president}`}>
 
           {posts}
         </Link>

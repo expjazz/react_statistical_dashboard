@@ -2,6 +2,7 @@ const defaultState = {
   president: 'Donald Trump',
   month: 1,
   socialMedia: 'instagram',
+  currentSort: 1,
 };
 
 export default (state = defaultState, action) => {
@@ -19,7 +20,8 @@ export default (state = defaultState, action) => {
     case 'SET_MONTH_FILTER':
       return {
         ...state,
-        month: action.payload,
+        month: action.payload.month,
+        currentSort: action.payload.currentSort,
       };
     default:
       return state;

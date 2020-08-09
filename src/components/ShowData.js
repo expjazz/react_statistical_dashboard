@@ -30,41 +30,43 @@ const PresidentIndex = styled.div.attrs({
 function ShowData(props) {
   const dispatch = useDispatch();
   const numberMonths = useSelector(state => state.commonData.months);
-  const unSortedMonth = useSelector(selectSocialMedia);
-  const [byMonth, setByMonth] = useState(unSortedMonth);
+  const byMonth = useSelector(selectSocialMedia);
+  const month = useSelector(state => state.filter.month);
   const sortBy = value => {
-    let valNum;
     switch (value) {
       case 'Followers':
-        valNum = 1;
+        dispatch({
+          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 1 },
+        });
         break;
       case 'Likes':
-        valNum = 2;
+        dispatch({
+          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 2 },
+        });
         break;
 
       case 'Comments':
-        valNum = 3;
+        dispatch({
+          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 3 },
+        });
         break;
 
       case 'Posts':
-        valNum = 4;
+        dispatch({
+          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 4 },
+        });
         break;
 
       default:
-        valNum = 1;
+        return '';
     }
-    const sorted = byMonth.sort((a, b) => (b[valNum] - a[valNum]));
-    setByMonth(sorted);
   };
-  if (unSortedMonth.length > 0) {
-    if (byMonth.length === 0)setByMonth(unSortedMonth);
-  }
 
   return (
     <PresidentIndex>
       <div className="container">
 
-        <select onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: parseInt(e.target.value) })}>
+        <select onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: { month: parseInt(e.target.value), currentSort: 4 } })}>
           {numberMonths.map((month, num) => <option key={num} value={`${num + 1} `}>{month}</option>)}
 
         </select>

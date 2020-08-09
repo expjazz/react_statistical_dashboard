@@ -64,7 +64,7 @@ const selectSocialMedia = createSelector(
       default:
         return socialData;
     }
-  }),
+  }).sort((a, b) => b[filter.currentSort] - a[filter.currentSort]),
 );
 
 const selectListOnlyPresidents = createSelector(
