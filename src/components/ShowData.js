@@ -29,6 +29,7 @@ const PresidentIndex = styled.div.attrs({
 
 function ShowData(props) {
   const dispatch = useDispatch();
+  const currentSort = useSelector(state => state.filter.currentSort);
   const numberMonths = useSelector(state => state.commonData.months);
   const byMonth = useSelector(selectSocialMedia);
   const month = useSelector(state => state.filter.month);
@@ -66,7 +67,7 @@ function ShowData(props) {
     <PresidentIndex>
       <div className="container">
 
-        <select onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: { month: parseInt(e.target.value), currentSort: 4 } })}>
+        <select onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: { month: parseInt(e.target.value), currentSort } })}>
           {numberMonths.map((month, num) => <option key={num} value={`${num + 1} `}>{month}</option>)}
 
         </select>
