@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -31,6 +32,7 @@ function ShowData() {
   const dispatch = useDispatch();
   const currentSort = useSelector(state => state.filter.currentSort);
   const numberMonths = useSelector(state => state.commonData.months);
+  let count = 0;
   const byMonth = useSelector(selectSocialMedia);
   const month = useSelector(state => state.filter.month);
   const sortBy = value => {
@@ -65,8 +67,13 @@ function ShowData() {
     <PresidentIndex>
       <div className="container">
 
-        <select onChange={e => dispatch({ type: 'SET_MONTH_FILTER', payload: { month: parseInt(e.target.value), currentSort } })}>
-          {numberMonths.map((month, num) => <option key={num} value={`${num + 1} `}>{month}</option>)}
+        <select onChange={e => dispatch(setMonthFilter({
+          month: parseInt(e.target
+            .value),
+          currentSort,
+        }))}
+        >
+          {numberMonths.map((month, num) => { count += 1; return <option key={count} value={`${num + 1} `}>{month}</option>; })}
 
         </select>
         <table>
@@ -76,10 +83,7 @@ function ShowData() {
           </thead>
           <tbody>
 
-            { byMonth.map((president, ind) => (
-
-              <PresidentCard followers={president[1] || '-'} likes={president[2] || '-'} comments={president[3] || '-'} posts={president[4] || '-'} president={president[0]} back={ind} key={ind} />
-            )) }
+            { byMonth.map((president, ind) => { count += 1; return <PresidentCard followers={president[1] || '-'} likes={president[2] || '-'} comments={president[3] || '-'} posts={president[4] || '-'} president={president[0]} back={ind} key={count} />; })}
           </tbody>
         </table>
 
