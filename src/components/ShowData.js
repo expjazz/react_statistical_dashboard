@@ -34,10 +34,10 @@ function ShowData() {
   const byMonth = useSelector(selectSocialMedia);
   const month = useSelector(state => state.filter.month);
   const sortBy = value => {
-    console.log('here');
     switch (value.toLowerCase()) {
       case 'followers':
         dispatch(setMonthFilter({ month, currentSort: 1 }));
+
         break;
       case 'likes':
         dispatch(setMonthFilter({ month, currentSort: 2 }));
@@ -57,6 +57,8 @@ function ShowData() {
       default:
         return '';
     }
+
+    return '';
   };
 
   return (
