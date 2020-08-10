@@ -1,4 +1,4 @@
-# Project Calculator
+# Statistic Dashboard
 This is a statistics dashboard that contains the database with information of how the word leaders deal with the social media. The information can be filtered and sorted, and visualized though different charts.
 
 
