@@ -21,6 +21,7 @@ Displays the data in a table filtering by month and social media, while sorting 
 - Chart JS
 - Jest
 - Javascript
+- RubyonRails for the [backend](https://github.com/expjazz/react_caps_backend)
 
 ### Getting Started
 
