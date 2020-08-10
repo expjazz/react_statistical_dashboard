@@ -17,7 +17,8 @@ const Root = ({ store }) => (
 );
 
 Root.propTypes = {
-  store: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  store: PropTypes.object.isRequired,
 };
 
 ReactDOM.render(

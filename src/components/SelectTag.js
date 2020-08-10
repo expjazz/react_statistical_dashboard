@@ -43,5 +43,5 @@ SelectTag.propTypes = {
   content: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
   action: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  parentState: PropTypes.func.isRequired,
+  parentState: PropTypes.func,
 };

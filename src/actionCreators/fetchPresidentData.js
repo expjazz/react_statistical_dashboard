@@ -14,14 +14,15 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
     if (false) {
       // this is disabled because of the
       //  limit of requests (only 300). I will enable after / if approved
-      const googleImg = await fetch(`https://google-search3.p.rapidapi.com/api/v1/images/q=${president}`, {
+      const googleImg = await fetch(`https://google-search3.p.rapidapi.com/api/v1/images/q${president}`, {
         method: 'GET',
         headers: {
           'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-          'x-rapidapi-key': 'noKey',
+          'x-rapidapi-key': `${process.env.key}`,
         },
       });
       const googleJson = await googleImg.json();
+      console.log(googleJson);
       image = googleJson.image_results[0].image.src;
     } else {
       image = imageParsed.query.pages[tempImage].original.source;
