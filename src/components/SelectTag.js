@@ -45,3 +45,7 @@ SelectTag.propTypes = {
   value: PropTypes.string.isRequired,
   parentState: PropTypes.func,
 };
+
+SelectTag.defaultProps = {
+  parentState: null,
+};
