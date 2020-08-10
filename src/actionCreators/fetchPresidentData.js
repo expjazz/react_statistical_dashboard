@@ -31,8 +31,3 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
     console.log(e);
   }
 };
-
-// let [items, contactlist, itemgroup] = await Promise.all([
-//   fetch("http://localhost:3000/items/get"),
-//   fetch("http://localhost:3000/contactlist/get"),
-//   fetch("http://localhost:3000/itemgroup/get")

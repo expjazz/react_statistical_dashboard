@@ -25,7 +25,6 @@ const StyledPresidentInfo = styled.div.attrs({
     
 
       left: 50%;
-      /* margin-top: 2rem; */
       }
     &:before {
       height: 100px;
@@ -33,7 +32,6 @@ const StyledPresidentInfo = styled.div.attrs({
       ${tw`bg-gray-100 absolute`}
       content: "";
       width: 30%;
-      /* transform: skewX(50deg); */
     
 
       left: 70%;

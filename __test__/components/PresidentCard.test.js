@@ -1,5 +1,4 @@
-import Enzyme, { shallow, mount } from 'enzyme';
-// import toJSON from 'enzyme-to-json';
+import Enzyme, { mount } from 'enzyme';
 import React from 'react';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
