@@ -26,7 +26,7 @@ const PresidentIndex = styled.div.attrs({
 
 `;
 
-function ShowData(props) {
+function ShowData() {
   const dispatch = useDispatch();
   const currentSort = useSelector(state => state.filter.currentSort);
   const numberMonths = useSelector(state => state.commonData.months);

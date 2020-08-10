@@ -41,7 +41,6 @@ export default function BottomNav() {
   const handleData = e => {
     e.preventDefault();
     dispatch({ type: 'SET_SOCIAL_MEDIA_FILTER', payload: e.target.innerText });
-    console.log(e.target.innerText);
   };
   return (
     <StyledBottomNav>

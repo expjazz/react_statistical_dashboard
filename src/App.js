@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
 import './index.css';
-import Home from './pages/Home';
-import PresidentPage from './pages/PresidentPage';
-import Dashboard from './pages/Dashboard';
+
 import { fetchData } from './actionCreators/fetchData';
 import Navbar from './components/Navbar';
-import IntroPage from './pages/IntroPage';
+import RouteFile from './components/RouteFile';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,21 +14,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Switch>
-        <Route exact path="/index">
-
-          <Home />
-        </Route>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/:president">
-          <PresidentPage />
-        </Route>
-        <Route path="/">
-          <IntroPage />
-        </Route>
-      </Switch>
+      <RouteFile />
     </div>
 
   );
