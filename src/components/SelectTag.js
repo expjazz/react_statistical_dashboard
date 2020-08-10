@@ -7,7 +7,6 @@ const StyledSelect = styled.select.attrs({
   className: 'w-25 bg-white flex content-center focus:outline-none',
 })`
 
-
 `;
 
 export default function SelectTag(props) {

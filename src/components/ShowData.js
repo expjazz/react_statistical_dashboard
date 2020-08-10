@@ -12,19 +12,20 @@ const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
   className: 'w-full bg-gray-300 pt-4',
 })`
- &{
-   .container {
-     ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl border-t-2`}
-    select {
-      ${tw`self-end bg-white`}
-      color: #423e3e;
+  & {
+    .container {
+      ${tw`bg-white mx-auto flex flex-col border-gray-500 border-l-2 border-r-2 shadow-2xl border-t-2`}
+      select {
+        ${tw`self-end bg-white`}
 
+        color: #423e3e;
+      }
+
+      table {
+        ${tw`w-100`}
+      }
     }
-    table {
-      ${tw`w-100`}
-    }
-   }
- }
+  }
 
 `;
 

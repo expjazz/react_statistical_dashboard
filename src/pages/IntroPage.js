@@ -6,6 +6,7 @@ const StyledIntro = styled.div.attrs({
   className: 'w-100 bg-gray-300 flex flex-col content-center items-center justify-center',
 })`
   height: 100vh;
+
   img {
     width: 200px;
     height: 200px;

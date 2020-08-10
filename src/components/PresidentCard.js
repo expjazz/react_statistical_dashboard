@@ -10,10 +10,12 @@ const StyledPresidentCard = styled.tr.attrs({
   className: 'text-center',
 })`
   z-index: -1;
+
   & {
     td {
       color: gray;
     }
+
     .president {
       color: black;
     }
@@ -21,15 +23,19 @@ const StyledPresidentCard = styled.tr.attrs({
     a {
       ${tw`text-center`}
     }
+
     .left {
       ${tw`w-1/6`}
     }
+
     .center {
       ${tw`flex w-100`}
     }
+
     .content {
       ${tw`flex`}
     }
+
     .content > div {
       ${tw`flex flex-col`}
     }

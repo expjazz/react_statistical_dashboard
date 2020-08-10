@@ -14,7 +14,8 @@ const StyledPresidentInfo = styled.div.attrs({
     left: 0;
     height: 50%;
     ${tw`bg-gray-100 absolute`}
-    &:after {
+
+    &::after {
       height: 100px;
       bottom: -100px;
       ${tw`bg-gray-100 absolute`}
@@ -22,42 +23,43 @@ const StyledPresidentInfo = styled.div.attrs({
       content: "";
       width: 25%;
       transform: skewX(50deg);
-    
-
       left: 50%;
-      }
-    &:before {
+    }
+
+    &::before {
       height: 100px;
       bottom: -100px;
       ${tw`bg-gray-100 absolute`}
+
       content: "";
       width: 30%;
-    
-
       left: 70%;
     }
-    }
-
   }
+
   .contentShow {
     position: absolute;
-    
     top: 0;
     left: 0;
   }
 
   .content {
     ${tw`pt-16 mb-32 px-32`}
-
   }
+
   img {
     float: right;
     ${tw`shadow-xl border-4 rounded-full`}
   }
-  .title, .bottom {
+
+  .title,
+  .bottom {
   }
+
   .title p {
     font-size: 2rem;
+  }
+
   }
 `;
 export default function PresidentInfo() {

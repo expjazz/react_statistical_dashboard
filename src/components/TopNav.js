@@ -7,7 +7,7 @@ const StyledNav = styled.nav.attrs({
   className: 'w-100 bg-white flex items-baseline relative',
 })`
   & {
-    :before {
+    ::before {
       height: 2px;
       background: #ababab2e;
       content: "";
@@ -20,12 +20,15 @@ const StyledNav = styled.nav.attrs({
       left: 50%;
       margin-top: 2rem;
     }
+
     .left {
       ${tw`flex`}
     }
+
     .links {
       ${tw`flex items-center`}
     }
+
     .logo {
       width: 50px;
     }

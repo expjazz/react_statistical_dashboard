@@ -13,7 +13,6 @@ const StyledTr = styled.tr.attrs({
       font-weight: 300;
       ${tw`cursor-pointer`}
     }
-
   }
 `;
 
