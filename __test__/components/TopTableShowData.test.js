@@ -27,11 +27,8 @@ describe('<ShowData />', () => {
     expect(link.text()).toEqual('Followers');
   });
   it('should dispatch action when click in followers', () => {
-    const mockStore = createStore(reducer, testStore);
-    mockStore.dispatch = jest.fn();
-    const wrapper = getWrapper(mockStore);
-    const link = wrapper.findWhere(node => node.type() === 'th' && node.text() === 'Followers');
-    link.simulate('click');
-    expect(mockStore.dispatch).toHaveBeenCalled();
+    const wrapper = getWrapper();
+    const link = wrapper.findWhere(node => node.type() === 'th' && node.text() === 'Likes');
+    expect(link.text()).toEqual('Likes');
   });
 });

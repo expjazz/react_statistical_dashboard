@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
+import PropTypes from 'prop-types';
 
 const StyledTr = styled.tr.attrs({
   className: 'w-100 bg-gray-300 border-gray-500 border-t-2 border-b-2',
@@ -28,3 +29,7 @@ export default function TopTableShowData(props) {
     </StyledTr>
   );
 }
+
+TopTableShowData.propTypes = {
+  sortBy: PropTypes.func.isRequired,
+};

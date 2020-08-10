@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { setPresidentFilter } from '../actionCreators/filters';
 
 const StyledPresidentCard = styled.tr.attrs({
@@ -83,3 +84,13 @@ export default function PresidentCard(props) {
     </StyledPresidentCard>
   );
 }
+
+PresidentCard.propTypes = {
+  president: PropTypes.string.isRequired,
+  followers: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
+  comments: PropTypes.number.isRequired,
+  posts: PropTypes.number.isRequired,
+  back: PropTypes.number.isRequired,
+
+};
