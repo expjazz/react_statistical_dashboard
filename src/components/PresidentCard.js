@@ -87,10 +87,20 @@ export default function PresidentCard(props) {
 
 PresidentCard.propTypes = {
   president: PropTypes.string.isRequired,
-  followers: PropTypes.number.isRequired,
-  likes: PropTypes.number.isRequired,
-  comments: PropTypes.number.isRequired,
-  posts: PropTypes.number.isRequired,
-  back: PropTypes.number.isRequired,
+  followers: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['-'])]).isRequired,
+  likes: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['-'])]).isRequired,
+  comments: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['-'])]).isRequired,
+  posts: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['-'])]).isRequired,
+  back: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['-'])]).isRequired,
 
 };
