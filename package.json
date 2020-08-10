@@ -30,7 +30,7 @@
     "watch:css": "postcss src/tailwind.css -o src/index.css",
     "start": "npm run watch:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",
-    "test": "react-scripts test",
+    "test": "NODE_ENV=test jest --watch",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

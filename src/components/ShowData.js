@@ -5,6 +5,7 @@ import tw from 'tailwind.macro';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 import TopTableShowData from './TopTableShowData';
+import { setMonthFilter } from '../actionCreators/filters';
 
 const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
@@ -33,28 +34,24 @@ function ShowData() {
   const byMonth = useSelector(selectSocialMedia);
   const month = useSelector(state => state.filter.month);
   const sortBy = value => {
+    console.log('here');
     switch (value.toLowerCase()) {
       case 'followers':
-        dispatch({
-          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 1 },
-        });
+        dispatch(setMonthFilter({ month, currentSort: 1 }));
         break;
       case 'likes':
-        dispatch({
-          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 2 },
-        });
+        dispatch(setMonthFilter({ month, currentSort: 2 }));
+
         break;
 
       case 'comments':
-        dispatch({
-          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 3 },
-        });
+        dispatch(setMonthFilter({ month, currentSort: 3 }));
+
         break;
 
       case 'posts':
-        dispatch({
-          type: 'SET_MONTH_FILTER', payload: { month, currentSort: 4 },
-        });
+        dispatch(setMonthFilter({ month, currentSort: 4 }));
+
         break;
 
       default:
