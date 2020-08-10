@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
-import ShowData from '../../src/components/ShowData';
+import TopTableShowData from '../../src/components/ShowData';
 import reducer from '../../src/reducers/index';
 import { testStore } from '../../src/simulateStore';
 
@@ -17,21 +17,21 @@ describe('<ShowData />', () => {
   const getWrapper = (mockStore = createStore(reducer, testStore)) => mount(
     <Provider store={mockStore}>
       <Router>
-
-        <ShowData />
+        <TopTableShowData />
       </Router>
     </Provider>,
   );
   it('should find some president names', () => {
     const wrapper = getWrapper();
-    expect(wrapper.find('select').text()).toEqual('JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember');
+    const link = wrapper.findWhere(node => node.type() === 'th' && node.text() === 'Followers');
+    expect(link.text()).toEqual('Followers');
   });
   it('should dispatch action when click in followers', () => {
     const mockStore = createStore(reducer, testStore);
     mockStore.dispatch = jest.fn();
     const wrapper = getWrapper(mockStore);
-    const action = wrapper.findWhere(node => node.type() === 'select');
-    action.simulate('change', { target: { value: '2' } });
+    const link = wrapper.findWhere(node => node.type() === 'th' && node.text() === 'Followers');
+    link.simulate('click');
     expect(mockStore.dispatch).toHaveBeenCalled();
   });
 });
