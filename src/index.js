@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import App from './App';
 import store from './store';
 
@@ -14,6 +15,10 @@ const Root = ({ store }) => (
     </Router>
   </Provider>
 );
+
+Root.propTypes = {
+  store: PropTypes.func.isRequired,
+};
 
 ReactDOM.render(
   <Root store={store} />,

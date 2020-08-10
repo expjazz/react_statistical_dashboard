@@ -6,11 +6,15 @@ const selectPresident = createSelector(
     .filter(row => row.profile === filter.president).map(row => {
       switch (filter.socialMedia) {
         case 'instagram':
-          return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments, row.insta_number_posts, row.month];
+          return [row.profile, row.insta_followers, row
+            .insta_number_likes, row.insta_number_comments, row.insta_number_posts, row.month];
         case 'facebook':
-          return [row.profile, row.fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts, row.month];
+          return [row.profile, row.fb_followers, row.fb_number_likes, row
+            .fb_number_comments, row.fb_number_posts, row.month];
         case 'twitter':
-          return [row.profile, row.twitter_fans, row.twitter_number_likes, row.twitter_retweets, row.twitter_number_posts, row.month];
+          return [row.profile, row
+            .twitter_fans, row.twitter_number_likes, row
+            .twitter_retweets, row.twitter_number_posts, row.month];
         default:
           return socialData;
       }
@@ -52,19 +56,25 @@ const selectMonth = createSelector(
 
 const selectSocialMedia = createSelector(
   state => state.socialData, state => state.filter,
-  (socialData, filter) => socialData.info.filter(row => row.month === filter.month && row.category === 'Líderes Mundiais').map(row => {
-    switch (filter.socialMedia) {
-      case 'instagram':
-        return [row.profile, row.insta_followers, row.insta_number_likes, row.insta_number_comments, row.insta_number_posts];
+  (socialData, filter) => socialData
+    .info.filter(row => row.month === filter.month && row.category === 'Líderes Mundiais').map(row => {
+      switch (filter.socialMedia) {
+        case 'instagram':
+          return [row.profile, row
+            .insta_followers, row
+            .insta_number_likes, row.insta_number_comments, row.insta_number_posts];
 
-      case 'facebook':
-        return [row.profile, row.fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts];
-      case 'twitter':
-        return [row.profile, row.twitter_fans, row.twitter_number_likes, row.twitter_retweets, row.twitter_number_posts];
-      default:
-        return socialData;
-    }
-  }).sort((a, b) => b[filter.currentSort] - a[filter.currentSort]),
+        case 'facebook':
+          return [row.profile, row
+            .fb_followers, row.fb_number_likes, row.fb_number_comments, row.fb_number_posts];
+        case 'twitter':
+          return [row.profile, row
+            .twitter_fans, row.twitter_number_likes, row
+            .twitter_retweets, row.twitter_number_posts];
+        default:
+          return socialData;
+      }
+    }).sort((a, b) => b[filter.currentSort] - a[filter.currentSort]),
 );
 
 const selectListOnlyPresidents = createSelector(
@@ -93,7 +103,9 @@ const clearData = createSelector(
       twitter: 0,
     };
     data.forEach(row => {
-      obj.all += ((row.insta_followers || 0) + (row.twitter_fans || 0) + (row.fb_followers || 0)) / 1000000;
+      obj.all += ((row
+        .insta_followers || 0) + (row.twitter_fans || 0) + (row
+        .fb_followers || 0)) / 1000000;
       obj.inst += (row.insta_followers || 1) / 1000000;
       obj.fb += (row.fb_followers || 1) / 1000000;
       obj.twitter += (row.twitter_fans || 1) / 1000000;
@@ -107,5 +119,11 @@ const clearData = createSelector(
 );
 
 export default {
-  selectPresident, selectMonth, selectSocialMedia, clearData, selectRowByPresident, selectListsByPresidents, selectListOnlyPresidents,
+  selectPresident,
+  selectMonth,
+  selectSocialMedia,
+  clearData,
+  selectRowByPresident,
+  selectListsByPresidents,
+  selectListOnlyPresidents,
 };

@@ -4,7 +4,6 @@ const selectPieChartData = createSelector(
   state => state.socialData, state => state.pieChartAll,
   (socialData, pieChartAll) => {
     const { currentQueryPresidents } = pieChartAll;
-    console.log(currentQueryPresidents);
     let data = [];
     currentQueryPresidents.forEach(president => {
       data = [...data, (socialData.info.filter(row => row.profile === president))];
@@ -16,7 +15,8 @@ const selectPieChartData = createSelector(
       twitter: 0,
     };
     data.forEach(president => president.forEach(row => {
-      obj.all += ((row.insta_followers || 0) + (row.twitter_fans || 0) + (row.fb_followers || 0)) / 1000000;
+      obj.all += ((row
+        .insta_followers || 0) + (row.twitter_fans || 0) + (row.fb_followers || 0)) / 1000000;
       obj.inst += (row.insta_followers || 1) / 1000000;
       obj.fb += (row.fb_followers || 1) / 1000000;
       obj.twitter += (row.twitter_fans || 1) / 1000000;

@@ -14,7 +14,6 @@ export default function PieChartAll() {
   const queryPresidents = useSelector(state => state.pieChartAll.currentQueryPresidents);
   const { selectPieChartData } = pieSelector;
   const cleanData = useSelector(selectPieChartData);
-  console.log(cleanData);
   // do event listeners to change the data
   const handleQuery = e => {
     queryPresidents.push(e.target.value);

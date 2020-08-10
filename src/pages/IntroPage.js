@@ -17,7 +17,11 @@ export default function IntroPage() {
     <StyledIntro>
       <img src="logo.png" alt="" />
       <h4>Welcome to the Liders of the World dashboard.</h4>
-      <p>Here you will find data analisys about the popularity of the world leaders throughout the social media</p>
+      <p>
+        Here you will find data analisys about the popularity
+        of the world leaders throughout the social media
+
+      </p>
       <Link to="/index">
 
         Click here to now more

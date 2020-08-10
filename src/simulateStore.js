@@ -18,4 +18,5 @@ const testStore = {
   commonData: { months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] },
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { testStore };

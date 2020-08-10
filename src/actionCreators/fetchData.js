@@ -7,6 +7,7 @@ export const fetchData = () => async dispatch => {
       type: 'FETCH_DATA', payload: data,
     });
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log(e);
   }
 };

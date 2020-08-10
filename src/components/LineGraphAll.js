@@ -13,9 +13,11 @@ export default function LineGraphAll() {
   const socialMediaTags = useSelector(state => state.indexDataReducer.social);
   const currentTag = Object.keys(socialMediaTags)[0];
   const tags = socialMediaTags[currentTag].map(row => row[0]);
-  const [currentQuery, setCurrentQuery] = useState(useSelector(state => state.lineGraphAll.currentQuery));
+  const [currentQuery, setCurrentQuery] = useState(useSelector(state => state
+    .lineGraphAll.currentQuery));
   const [colors] = useState(['red', 'blue', 'yellow', 'purple', 'green', 'gray', 'orange', 'pink']);
-  const [presidentInChart, setPresidentInChart] = useState(useSelector(state => state.lineGraphAll.presidentInChart));
+  const [presidentInChart, setPresidentInChart] = useState(useSelector(state => state
+    .lineGraphAll.presidentInChart));
   const handleSelectChangePresident = e => {
     const newPresidents = [...presidentInChart, e.target.value];
     setPresidentInChart(newPresidents);
@@ -49,7 +51,7 @@ export default function LineGraphAll() {
           },
         ));
 
-        break;
+        return '';
 
       case 'Facebook':
         setCurrentQuery(['Followers', 'fb_followers']);
@@ -62,7 +64,7 @@ export default function LineGraphAll() {
           ],
         }));
 
-        break;
+        return '';
       case 'Instagram':
         setCurrentQuery(['Followers', 'insta_followers']);
         dispatch(setIndexDataInstagram({
@@ -74,7 +76,7 @@ export default function LineGraphAll() {
           ],
         }));
 
-        break;
+        return '';
       default:
         return '';
     }
@@ -84,7 +86,8 @@ export default function LineGraphAll() {
   }
   const setData = social => {
     let count = 0;
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const labels = ['January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const dataset = [];
     presidentInChart.forEach(president => {
       const cleanedData = rowsByPresident[president].map(row => row[social]);
@@ -112,9 +115,18 @@ export default function LineGraphAll() {
     <>
       <div className="selectContainers flex px-30 justify-center py-10">
 
-        <SelectTag content={presidents} parentState={handleSelectChangePresident} value={presidentInChart[-1]} />
+        <SelectTag
+          content={presidents}
+          parentState={handleSelectChangePresident}
+          value={presidentInChart[-1]}
+        />
         <div className="socialMedia">
-          <SelectTag content={['Twitter', 'Facebook', 'Instagram']} value={Object.keys(socialMediaTags)[0]} parentState={handleSelectChangeSocial} />
+          <SelectTag
+            content={['Twitter', 'Facebook', 'Instagram']}
+            value={Object
+              .keys(socialMediaTags)[0]}
+            parentState={handleSelectChangeSocial}
+          />
         </div>
         <div className="socialTags">
           <SelectTag content={tags} value={currentQuery[0]} parentState={handleSearchQuery} />

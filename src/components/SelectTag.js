@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const StyledSelect = styled.select.attrs({
   className: 'w-25 bg-white flex content-center focus:outline-none',
@@ -10,6 +11,7 @@ const StyledSelect = styled.select.attrs({
 `;
 
 export default function SelectTag(props) {
+  let count = 0;
   const dispatch = useDispatch();
   let handleChange;
   const {
@@ -25,11 +27,22 @@ export default function SelectTag(props) {
 
   return (
     <StyledSelect value={value} onChange={e => handleChange(e)}>
-      {content.map((network, ind) => (
-        <option key={ind} value={network}>
-          {network}
-        </option>
-      ))}
+      {content.map(network => {
+        count += 1;
+
+        return (
+          <option key={count} value={network}>
+            {network}
+          </option>
+        );
+      })}
     </StyledSelect>
   );
 }
+
+SelectTag.propTypes = {
+  content: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
+  action: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  parentState: PropTypes.func.isRequired,
+};
