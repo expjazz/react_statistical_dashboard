@@ -1,5 +1,6 @@
-import { setMonthFilter, setPresidentFilter, setSocialMediaFilter } from '../../src/actionCreators/filters';
+import actions from '../../src/actionCreators/filters';
 
+const { setMonthFilter, setPresidentFilter, setSocialMediaFilter } = actions;
 describe('actions', () => {
   it('should filter data', () => {
     const actionExpected = { type: 'SET_MONTH_FILTER', payload: { month: 1, currentSort: 1 } };
