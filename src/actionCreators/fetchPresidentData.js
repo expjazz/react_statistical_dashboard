@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 export const fetchPresidentData = () => async (dispatch, getState) => {
   const { filter: { president } } = getState();
@@ -28,6 +27,8 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
       type: 'GET_INFO_PRESIDENT', payload: { text: data, image },
     });
   } catch (e) {
-    console.log(e);
+    dispatch({
+      type: 'API_INFO_PRESIDENT_ERROR', payload: { error: e },
+    });
   }
 };
