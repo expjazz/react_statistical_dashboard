@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setPresidentFilter } from '../actionCreators/filters';
+import actions from '../actionCreators/filters';
 
 const StyledPresidentCard = styled.tr.attrs({
   className: 'text-center',
@@ -43,6 +43,7 @@ const StyledPresidentCard = styled.tr.attrs({
 
 `;
 export default function PresidentCard(props) {
+  const { setPresidentFilter } = actions;
   const {
     president, followers, likes, comments, posts, back,
   } = props;

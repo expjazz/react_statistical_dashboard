@@ -6,7 +6,7 @@ import tw from 'tailwind.macro';
 import allSelects from '../selectors/allSelects';
 import PresidentCard from './PresidentCard';
 import TopTableShowData from './TopTableShowData';
-import { setMonthFilter } from '../actionCreators/filters';
+import actions from '../actionCreators/filters';
 
 const { selectSocialMedia } = allSelects;
 const PresidentIndex = styled.div.attrs({
@@ -30,6 +30,7 @@ const PresidentIndex = styled.div.attrs({
 `;
 
 function ShowData() {
+  const { setMonthFilter } = actions;
   const dispatch = useDispatch();
   const currentSort = useSelector(state => state.filter.currentSort);
   const numberMonths = useSelector(state => state.commonData.months);
