@@ -41,11 +41,13 @@ export default function SelectTag(props) {
 
 SelectTag.propTypes = {
   content: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
-  action: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  action: PropTypes.string,
+  value: PropTypes.string,
   parentState: PropTypes.func,
 };
 
 SelectTag.defaultProps = {
   parentState: null,
+  action: null,
+  value: '-',
 };

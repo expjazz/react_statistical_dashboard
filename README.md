@@ -14,6 +14,10 @@ This is a statistics dashboard that contains the database with information of ho
 
 Displays the data in a table filtering by month and social media, while sorting by posts, likes, followers or comments. It also displays many charts, in which the data had to be manipulated.
 
+### Live Demo
+
+- [Here](https://leadersofworlddashboard.netlify.app/)
+
 ### BUILT WITH
 
 - React

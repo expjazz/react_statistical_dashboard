@@ -19,6 +19,7 @@ export default function LineGraphAll() {
   const [presidentInChart, setPresidentInChart] = useState(useSelector(state => state
     .lineGraphAll.presidentInChart));
   const handleSelectChangePresident = e => {
+    if (presidentInChart.includes(e.target.value)) return;
     const newPresidents = [...presidentInChart, e.target.value];
     setPresidentInChart(newPresidents);
     dispatch({

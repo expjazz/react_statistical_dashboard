@@ -9,25 +9,19 @@ export const fetchPresidentData = () => async (dispatch, getState) => {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&prop=pageimages|pageterms&piprop=original&titles=${president}&origin=*`)]);
     const [textParsed, imageParsed] = await Promise.all([rawText.json(), rawImage.json()]);
     const tempImage = Object.keys(imageParsed.query.pages)[0];
-    // console.log(imageParsed.query.pages[tempImage].original.source);
-    // eslint-disable-next-line no-constant-condition
-    if (false) {
-      // this is disabled because of the
-      //  limit of requests (only 300). I will enable after / if approved
-      const googleImg = await fetch(`https://google-search3.p.rapidapi.com/api/v1/images/q${president}`, {
+    if (!imageParsed.query.pages[tempImage].original) {
+      const googleImg = await fetch(`https://google-search3.p.rapidapi.com/api/v1/images/q=${president}`, {
         method: 'GET',
         headers: {
           'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-          'x-rapidapi-key': `${process.env.key}`,
+          'x-rapidapi-key': `${process.env.REACT_APP_API_KEY}`,
         },
       });
       const googleJson = await googleImg.json();
-      console.log(googleJson);
       image = googleJson.image_results[0].image.src;
     } else {
       image = imageParsed.query.pages[tempImage].original.source;
     }
-    // console.log(image);
     const temp = Object.keys(textParsed.query.pages);
     const data = textParsed.query.pages[temp[0]].extract;
     dispatch({

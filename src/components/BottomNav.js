@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 const StyledBottomNav = styled.div.attrs({
   className: 'w-100 flex justify-center',
 })`
-
   height: 40px;
 
   & {

@@ -31,6 +31,6 @@ export default function PresidentLinePerGrow() {
     },
   };
   return (
-    <Pie data={data} options={options} height="75" />
+    <Pie data={data} options={options} height={75} />
   );
 }

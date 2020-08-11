@@ -64,6 +64,6 @@ export default function PresidentLinePerGrow() {
 
   };
   return (
-    <Bar data={data} options={options} height="75" />
+    <Bar data={data} options={options} height={75} />
   );
 }

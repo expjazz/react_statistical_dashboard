@@ -6,7 +6,6 @@ import SelectTag from './SelectTag';
 import allSelects from '../selectors/allSelects';
 
 export default function PieChartAll() {
-  // grab tthe data
   const { selectListOnlyPresidents } = allSelects;
   const dispatch = useDispatch();
   const presidents = useSelector(selectListOnlyPresidents);
@@ -14,7 +13,6 @@ export default function PieChartAll() {
   const queryPresidents = useSelector(state => state.pieChartAll.currentQueryPresidents);
   const { selectPieChartData } = pieSelector;
   const cleanData = useSelector(selectPieChartData);
-  // do event listeners to change the data
   const handleQuery = e => {
     queryPresidents.push(e.target.value);
     dispatch({
@@ -22,7 +20,6 @@ export default function PieChartAll() {
       payload: queryPresidents,
     });
   };
-  // pass to chart
   const data = {
     labels: ['Facebook', 'Twitter', 'Instagram'],
     datasets: [

@@ -7,6 +7,10 @@ const StyledNav = styled.nav.attrs({
   className: 'w-100 bg-white flex items-baseline relative',
 })`
   & {
+    a {
+      margin-right: 20px;
+    }
+
     ::before {
       height: 2px;
       background: #ababab2e;
@@ -38,9 +42,12 @@ export default function TopNav() {
   return (
     <StyledNav>
       <div className="left">
-        <div className="logo">
-          <img src="logo.png" alt="" />
-        </div>
+        <Link to="/index">
+
+          <div className="logo">
+            <img src="logo.png" alt="" />
+          </div>
+        </Link>
         <div className="links">
           <Link to="/index">
             Home

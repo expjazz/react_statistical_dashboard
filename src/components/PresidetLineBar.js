@@ -61,6 +61,6 @@ export default function PresidetLineBar() {
     },
   };
   return (
-    <Line data={data} options={options} height="75" />
+    <Line data={data} options={options} height={75} />
   );
 }
