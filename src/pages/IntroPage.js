@@ -17,10 +17,9 @@ export default function IntroPage() {
   return (
     <StyledIntro>
       <img src="logo.png" alt="" />
-      <h4>Welcome to the Liders of the World dashboard.</h4>
+      <h4>Welcome to the Leaders of the World dashboard.</h4>
       <p>
-        Here you will find data analisys about the popularity
-        of the world leaders throughout the social media
+        Here you will find data analysis about the popularity of the world leaders throughout the social media. The data is fake as the goal of this is showcase a possible and viable react application
 
       </p>
       <Link to="/index">

@@ -50,7 +50,7 @@ Give a star if you like this project!
 ### Acknowledgments
 
 - Microverse
-- Quaest for the Data
+- This data is Fake. The idea is to showcase a possible dashoard
 
 ### 🤝 Contributing
 
