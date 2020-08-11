@@ -62,14 +62,21 @@ const selectSocialMedia = createSelector(
         case 'instagram':
           return [row.profile, row
             .insta_followers + Math.floor(Math.random() * 3) + 876584, row
-            .insta_number_likes + Math.floor(Math.random() * 33) + 876584, row.insta_number_comments + Math.floor(Math.random() * 12) + 876584, row.insta_number_posts];
+            .insta_number_likes + Math
+            .floor(Math.random() * 33) + 876584, row.insta_number_comments + Math
+            .floor(Math.random() * 12) + 876584, row.insta_number_posts];
 
         case 'facebook':
           return [row.profile, row
-            .fb_followers + Math.floor(Math.random() * 8) + 876584, row.fb_number_likes + Math.floor(Math.random() * 31) + 876584, row.fb_number_comments + Math.floor(Math.random() * 53) + 876584, row.fb_number_posts];
+            .fb_followers + Math.floor(Math
+            .random() * 8) + 876584, row.fb_number_likes + Math.floor(Math
+
+            .random() * 31) + 876584, row.fb_number_comments + Math.floor(Math
+            .random() * 53) + 876584, row.fb_number_posts];
         case 'twitter':
           return [row.profile, row
-            .twitter_fans + Math.floor(Math.random() * 32) + 876584, row.twitter_number_likes + Math.floor(Math.random() * 3) + 876584, row
+            .twitter_fans + Math.floor(Math.random() * 32) + 876584, row
+            .twitter_number_likes + Math.floor(Math.random() * 3) + 876584, row
             .twitter_retweets + Math.floor(Math.random() * 9) + 876584, row.twitter_number_posts];
         default:
           return socialData;
